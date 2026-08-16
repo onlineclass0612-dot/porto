@@ -1,14 +1,45 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   // Hanya izinkan method POST
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method Not Allowed' });
   }
 
-  const { name, email, subject, message } = req.body || {};
+  // Periksa apakah RESEND_API_KEY sudah diset di Vercel
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey || apiKey === 're_xxxxxxxxx') {
+    console.error('RESEND_API_KEY is not set or still default');
+    return res.status(500).json({
+      success: false,
+      message: 'RESEND_API_KEY belum diset di Vercel Environment Variables.'
+    });
+  }
+
+  // Parse body jika berupa string
+  let body = req.body;
+  if (typeof body === 'string') {
+    try {
+      body = JSON.parse(body);
+    } catch {
+      return res.status(400).json({ success: false, message: 'Invalid JSON payload' });
+    }
+  }
+
+  const { name, email, subject, message } = body || {};
 
   // Validasi input
   if (!name || !email || !message) {
@@ -18,12 +49,14 @@ export default async function handler(req, res) {
     });
   }
 
-  // Email tujuan (bisa diatur via environment variable TO_EMAIL atau default)
   const recipientEmail = process.env.TO_EMAIL || 'onlineclass0612@gmail.com';
+  const fromEmail = process.env.FROM_EMAIL || 'onboarding@resend.dev';
 
   try {
-    const data = await resend.emails.send({
-      from: process.env.FROM_EMAIL || 'onboarding@resend.dev',
+    const resend = new Resend(apiKey);
+
+    const { data, error } = await resend.emails.send({
+      from: fromEmail,
       to: recipientEmail,
       replyTo: email,
       subject: `[Portofolio] ${subject ? subject : 'Pesan Baru'} dari ${name}`,
@@ -35,7 +68,7 @@ export default async function handler(req, res) {
               📬 Pesan Baru dari Website Portofolio
             </h1>
             <p style="margin: 6px 0 0 0; color: rgba(255, 255, 255, 0.9); font-size: 13px;">
-              Ada pengunjung yang mengirimkan pesan melalui formulir kontak.
+              Ada pengunjung yang mengirimkan pesan melalui formulir kontak portofolio Anda.
             </p>
           </div>
 
@@ -77,16 +110,21 @@ ${message}
       `
     });
 
-    if (data.error) {
-      return res.status(400).json({ success: false, error: data.error });
+    if (error) {
+      console.error('Resend API Returned Error:', error);
+      return res.status(400).json({ 
+        success: false, 
+        message: error.message || 'Resend gagal mengirim email.', 
+        error 
+      });
     }
 
     return res.status(200).json({ success: true, data });
   } catch (error) {
-    console.error('Resend Handler Error:', error);
+    console.error('Server Handler Error:', error);
     return res.status(500).json({ 
       success: false, 
-      message: 'Gagal mengirim email.',
+      message: error.message || 'Terjadi kesalahan pada server saat mengirim email.',
       error: error.message 
     });
   }

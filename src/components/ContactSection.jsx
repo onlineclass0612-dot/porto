@@ -44,7 +44,16 @@ export const ContactSection = ({ personal }) => {
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
+      let result = {};
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        result = await response.json();
+      } else {
+        const text = await response.text();
+        if (!response.ok) {
+          throw new Error(text || `Server error (${response.status})`);
+        }
+      }
 
       if (!response.ok || !result.success) {
         throw new Error(result.message || result.error?.message || 'Gagal mengirim pesan.');
