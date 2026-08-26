@@ -15,27 +15,11 @@
     --grid-color: rgba(0, 240, 255, 0.04);
   }
 
-  .light-theme,
-  html.light-theme,
-  body.light-theme {
-    --bg-primary: #BCC8D6;
-    --bg-secondary: #ABB9CA;
-    --bg-card: rgba(255, 255, 255, 0.18);
-    --border-glow: rgba(99, 102, 241, 0.3);
-    --text-primary: #090D16;
-    --text-secondary: #1E293B;
-    --text-muted: #475569;
-    --accent-cyan: #0284C7;
-    --accent-violet: #7C3AED;
-    --accent-pink: #E11D48;
-    --grid-color: rgba(15, 23, 42, 0.06);
-  }
-
   body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, .font-heading {
@@ -57,32 +41,8 @@
     linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
 }
 
-.light-theme .cyber-grid {
-  background-image: 
-    linear-gradient(to right, rgba(15, 23, 42, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
-}
-
 /* ==========================================================================
-   Section Level Styling for Light Mode (Transparent & Blur)
-   ========================================================================== */
-.light-theme section {
-  position: relative;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(255, 255, 255, 0.35);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-}
-
-.light-theme section#home {
-  border-top: none;
-  background: transparent;
-  backdrop-filter: none;
-}
-
-/* ==========================================================================
-   Glassmorphism System (Transparent Glass & Blur Adaptation)
+   Glassmorphism System (Cyber Dark Glass & Blur)
    ========================================================================== */
 .glass-panel {
   background: var(--bg-card);
@@ -91,14 +51,6 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   transition: all 0.3s ease;
-}
-
-.light-theme .glass-panel {
-  background: rgba(255, 255, 255, 0.22) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
-  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.3) !important;
 }
 
 .glass-card {
@@ -116,244 +68,6 @@
   transform: translateY(-4px);
 }
 
-.light-theme .glass-card {
-  background: rgba(255, 255, 255, 0.18) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.45) !important;
-  box-shadow: 0 6px 20px -3px rgba(15, 23, 42, 0.06) !important;
-}
-
-.light-theme .glass-card:hover {
-  background: rgba(255, 255, 255, 0.32) !important;
-  border-color: rgba(99, 102, 241, 0.55) !important;
-  box-shadow: 0 14px 35px -6px rgba(99, 102, 241, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.4) !important;
-  transform: translateY(-4px);
-}
-
-/* ==========================================================================
-   Light Mode Global Typography & Dark Tones for OKLAB / OKLCH / Yellow / Neon Text
-   ========================================================================== */
-.light-theme {
-  color: #090D16 !important;
-
-  /* Universal Dark Text Overrides for all Slate / Gray / Neutral text */
-  .text-slate-100,
-  .text-slate-200,
-  .text-slate-300,
-  [class*="text-slate-1"],
-  [class*="text-slate-2"],
-  [class*="text-slate-3"],
-  [class*="text-gray-1"],
-  [class*="text-gray-2"],
-  [class*="text-gray-3"],
-  [class*="text-zinc-1"],
-  [class*="text-zinc-2"],
-  [class*="text-zinc-3"],
-  [class*="text-neutral-1"],
-  [class*="text-neutral-2"],
-  [class*="text-neutral-3"] {
-    color: #090D16 !important; /* Deep Solid Charcoal Black */
-  }
-
-  .text-slate-400,
-  .text-slate-500,
-  [class*="text-slate-4"],
-  [class*="text-slate-5"],
-  [class*="text-gray-4"],
-  [class*="text-gray-5"] {
-    color: #334155 !important; /* Medium Dark Slate */
-  }
-
-  /* Yellow, Amber & Orange Text -> Dark Solid Bronze / Warm Mahogany */
-  .text-amber-200,
-  .text-amber-300,
-  .text-amber-400,
-  .text-amber-500,
-  .text-yellow-200,
-  .text-yellow-300,
-  .text-yellow-400,
-  .text-yellow-500,
-  .text-orange-300,
-  .text-orange-400,
-  [class*="text-amber-"],
-  [class*="text-yellow-"],
-  [class*="text-orange-"] {
-    color: #78350F !important; /* Deep Dark Amber */
-  }
-
-  .fill-amber-400,
-  .fill-yellow-400,
-  .fill-amber-300,
-  .fill-yellow-300,
-  [class*="fill-amber-"],
-  [class*="fill-yellow-"] {
-    fill: #92400E !important;
-    color: #92400E !important;
-  }
-
-  /* Bright Cyan / Sky / Blue -> Deep Dark Navy */
-  .text-cyan-200,
-  .text-cyan-300,
-  .text-cyan-400,
-  .text-sky-200,
-  .text-sky-300,
-  .text-sky-400,
-  [class*="text-cyan-"],
-  [class*="text-sky-"],
-  [class*="text-blue-"] {
-    color: #0369A1 !important; /* Deep Navy Cyan */
-  }
-
-  /* Bright Purple / Violet / Indigo / Fuchsia -> Deep Dark Purple */
-  .text-purple-200,
-  .text-purple-300,
-  .text-purple-400,
-  .text-violet-200,
-  .text-violet-300,
-  .text-violet-400,
-  [class*="text-purple-"],
-  [class*="text-violet-"],
-  [class*="text-indigo-"],
-  [class*="text-fuchsia-"] {
-    color: #581C87 !important; /* Deep Dark Violet */
-  }
-
-  /* Bright Emerald / Green / Teal / Lime -> Deep Dark Forest Green */
-  .text-emerald-200,
-  .text-emerald-300,
-  .text-emerald-400,
-  .text-teal-200,
-  .text-teal-300,
-  .text-teal-400,
-  .text-green-300,
-  .text-green-400,
-  [class*="text-emerald-"],
-  [class*="text-teal-"],
-  [class*="text-green-"],
-  [class*="text-lime-"] {
-    color: #065F46 !important; /* Deep Forest Green */
-  }
-
-  /* Bright Pink / Rose / Red -> Deep Dark Crimson */
-  .text-pink-300,
-  .text-pink-400,
-  .text-rose-300,
-  .text-rose-400,
-  .text-red-400,
-  [class*="text-pink-"],
-  [class*="text-rose-"],
-  [class*="text-red-"] {
-    color: #9F1239 !important;
-  }
-
-  /* Headings */
-  h1, h2, h3, h4, h5, h6 {
-    color: #090D16 !important;
-  }
-
-  /* Backgrounds of mini widgets, pill badges, and containers */
-  .bg-slate-900,
-  .bg-slate-900\/90,
-  .bg-slate-900\/80,
-  .bg-slate-900\/70,
-  .bg-slate-900\/60,
-  .bg-slate-950,
-  .bg-\[\#0E1528\]\/80,
-  .bg-\[\#0E1322\]\/70,
-  .bg-\[\#0F172A\]\/90,
-  .bg-\[\#0A0E1A\]\/90,
-  .bg-\[\#0C111E\],
-  .bg-\[\#05070E\]\/80,
-  .bg-\[\#07090E\],
-  .bg-\[\#090D18\]\/95,
-  .bg-\[\#04060B\],
-  .bg-\[\#04060B\]\/85,
-  .bg-\[\#04060B\]\/80 {
-    background-color: rgba(255, 255, 255, 0.25) !important;
-    color: #090D16 !important;
-    border-color: rgba(255, 255, 255, 0.5) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-  }
-
-  /* Borders */
-  .border-slate-800,
-  .border-slate-800\/80,
-  .border-slate-800\/70,
-  .border-slate-800\/60,
-  .border-slate-700,
-  .border-slate-700\/80,
-  .border-slate-900 {
-    border-color: rgba(255, 255, 255, 0.45) !important;
-  }
-
-  /* Form Inputs & Textareas */
-  input, textarea {
-    background-color: rgba(255, 255, 255, 0.45) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    color: #090D16 !important;
-    border: 1px solid rgba(255, 255, 255, 0.65) !important;
-  }
-
-  input::placeholder, textarea::placeholder {
-    color: #64748B !important;
-  }
-
-  input:focus, textarea:focus {
-    background-color: rgba(255, 255, 255, 0.65) !important;
-    border-color: #0284C7 !important;
-    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.25) !important;
-  }
-
-  /* Navigation Header on Scroll */
-  header {
-    background-color: rgba(188, 200, 214, 0.75) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.45) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08) !important;
-  }
-
-  /* Footer */
-  footer {
-    background-color: rgba(171, 185, 202, 0.6) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.4) !important;
-  }
-
-  /* Code Terminal Display in Light Mode */
-  .font-mono.text-slate-300,
-  .font-mono.text-slate-400,
-  .font-mono * {
-    color: #090D16 !important;
-  }
-
-  .font-mono [class*="text-purple"] {
-    color: #581C87 !important;
-  }
-
-  .font-mono [class*="text-cyan"] {
-    color: #0369A1 !important;
-  }
-
-  .font-mono [class*="text-emerald"] {
-    color: #065F46 !important;
-  }
-
-  .font-mono [class*="text-amber"] {
-    color: #78350F !important;
-  }
-
-  /* Project Modal in Light Mode */
-  .project-modal-backdrop {
-    background-color: rgba(15, 23, 42, 0.5) !important;
-    backdrop-filter: blur(16px) !important;
-  }
-}
-
 /* ==========================================================================
    Cyber Text Gradients
    ========================================================================== */
@@ -363,13 +77,9 @@
   -webkit-text-fill-color: transparent;
 }
 
-.light-theme .cyber-gradient-text {
-  background: linear-gradient(135deg, #0284C7 0%, #7C3AED 50%, #DB2777 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-/* Custom Scrollbar */
+/* ==========================================================================
+   Custom Scrollbar
+   ========================================================================== */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -378,20 +88,18 @@
   background: #06080F;
 }
 
-.light-theme ::-webkit-scrollbar-track {
-  background: #BCC8D6;
-}
-
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #00F0FF, #8B5CF6);
   border-radius: 4px;
 }
 
-.light-theme ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #0284C7, #7C3AED);
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #38BDF8, #A855F7);
 }
 
-/* Animations */
+/* ==========================================================================
+   Animations
+   ========================================================================== */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }

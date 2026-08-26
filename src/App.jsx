@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { portfolioData } from './data/portfolioData';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
@@ -11,34 +11,14 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 
 export function App() {
-  const [theme, setTheme] = useState('dark');
-
   useEffect(() => {
-    const savedTheme = localStorage.getItem('porto_theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-      if (savedTheme === 'light') {
-        document.documentElement.classList.add('light-theme');
-      } else {
-        document.documentElement.classList.remove('light-theme');
-      }
-    }
+    // Pastikan light-theme dihilangkan dari root element
+    document.documentElement.classList.remove('light-theme');
+    localStorage.removeItem('porto_theme');
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    localStorage.setItem('porto_theme', newTheme);
-
-    if (newTheme === 'light') {
-      document.documentElement.classList.add('light-theme');
-    } else {
-      document.documentElement.classList.remove('light-theme');
-    }
-  };
-
   return (
-    <div className={`min-h-screen relative selection:bg-cyan-500/30 selection:text-cyan-200 ${theme === 'light' ? 'light-theme' : ''}`}>
+    <div className="min-h-screen relative selection:bg-cyan-500/30 selection:text-cyan-200 bg-[#06080F] text-slate-100">
       
       {/* Cyber Grid Background Matrix */}
       <div className="fixed inset-0 cyber-grid pointer-events-none z-0 opacity-80" />
@@ -49,11 +29,7 @@ export function App() {
 
       {/* Main Content Sections */}
       <div className="relative z-10">
-        <Navbar 
-          theme={theme} 
-          toggleTheme={toggleTheme} 
-          personal={portfolioData.personal} 
-        />
+        <Navbar personal={portfolioData.personal} />
 
         <main>
           <HeroSection personal={portfolioData.personal} />

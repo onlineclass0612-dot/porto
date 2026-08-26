@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, Moon, Sun, Menu, X, Download, Send, Sparkles } from 'lucide-react';
+import { Menu, X, Download, Sparkles } from 'lucide-react';
 
-export const Navbar = ({ theme, toggleTheme, personal }) => {
+export const Navbar = ({ personal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -85,21 +85,8 @@ export const Navbar = ({ theme, toggleTheme, personal }) => {
           })}
         </nav>
 
-        {/* Right Actions (Theme & CTA) */}
+        {/* Right Actions (CTA) */}
         <div className="hidden md:flex items-center gap-3">
-          {/* Theme Toggle Button */}
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle Theme"
-            className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-all shadow-sm"
-          >
-            {theme === 'dark' ? (
-              <Sun className="w-4 h-4 text-amber-400 animate-spin-slow" />
-            ) : (
-              <Moon className="w-4 h-4 text-purple-400" />
-            )}
-          </button>
-
           {/* Hire Me / Contact CTA */}
           <a
             href="#contact"
@@ -112,13 +99,6 @@ export const Navbar = ({ theme, toggleTheme, personal }) => {
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden items-center gap-2">
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle Theme"
-            className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300"
-          >
-            {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-purple-400" />}
-          </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Menu"
@@ -169,3 +149,4 @@ export const Navbar = ({ theme, toggleTheme, personal }) => {
     </header>
   );
 };
+export default Navbar;
