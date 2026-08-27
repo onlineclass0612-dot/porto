@@ -133,7 +133,7 @@ export const portfolioData = {
       id: "dreamy-island-resort",
       title: "Dreamy Island",
       subtitle: "Luxury Resort & Villa Booking Web Platform",
-      category: "React App",
+      category: "UI & Landing Pages",
       tags: ["React 19", "Vite", "Tailwind CSS", "Lucide Icons", "Responsive UI"],
       featured: true,
       image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1000&auto=format&fit=crop",
