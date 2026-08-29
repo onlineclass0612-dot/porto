@@ -1,5 +1,6 @@
 import attentioMockup from "../assets/attentio-mockup.jpg";
 import manjaddaMockup from "../assets/manjadda-mockup.jpg";
+import cinescopeMockup from "../assets/cinescope-mockup.jpg";
 
 export const portfolioData = {
   personal: {
@@ -79,7 +80,7 @@ export const portfolioData = {
       category: "React App",
       tags: ["React 19", "Vite", "Tailwind CSS", "TMDB API", "Axios"],
       featured: true,
-      image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1000&auto=format&fit=crop",
+      image: cinescopeMockup,
       badge: "Movie Explorer",
       summary: "Aplikasi web penjelajah film & serial TV modern yang dibangun dengan React 19, Vite, dan Tailwind CSS, terintegrasi langsung dengan The Movie Database (TMDB) API.",
       description: "Platform eksplorasi sinematik komprehensif yang memungkinkan pengguna mencari ribuan film dan serial TV populer, melihat rating, sinopsis, video trailer resmi, ulasan, daftar pemeran, serta menyaring film berdasarkan genre dan tingkat popularitas.",
