@@ -1,3 +1,5 @@
+import attentioMockup from "../assets/attentio-mockup.jpg";
+
 export const portfolioData = {
   personal: {
     name: "Averous",
@@ -156,7 +158,7 @@ export const portfolioData = {
       category: "Full-Stack Laravel",
       tags: ["Laravel 11", "Blade", "Tailwind CSS", "MySQL", "Chart.js"],
       featured: true,
-      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1000&auto=format&fit=crop",
+      image: attentioMockup,
       badge: "Full-Stack Laravel",
       summary: "Sistem absensi dan pemantauan aktivitas modern berbasis Laravel 11 dengan pencatatan kehadiran presisi, rekap laporan otomatis, dan dashboard analitik interaktif.",
       description: "Attentio adalah aplikasi web manajemen kehadiran dan aktivitas yang dirancang untuk meningkatkan efisiensi operasional organisasi. Menawarkan fitur pencatatan absensi real-time, pengajuan cuti & izin, visualisasi data kehadiran harian/bulanan, ekspor rekap laporan otomatis, serta sistem otorisasi multi-role yang aman.",
