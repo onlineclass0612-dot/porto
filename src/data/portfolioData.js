@@ -1,4 +1,5 @@
 import attentioMockup from "../assets/attentio-mockup.jpg";
+import manjaddaMockup from "../assets/manjadda-mockup.jpg";
 
 export const portfolioData = {
   personal: {
@@ -178,7 +179,7 @@ export const portfolioData = {
       category: "UI & Landing Pages",
       tags: ["Astro.js", "Motion Native", "Tailwind CSS", "TypeScript", "Responsive UI"],
       featured: true,
-      image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1000&auto=format&fit=crop",
+      image: manjaddaMockup,
       badge: "Pondok Modern Web",
       summary: "ManJadda adalah website Landing Page Pondok Modern yang dirancang untuk memperkenalkan profil lembaga, kurikulum unggulan, fasilitas santri, dan informasi pendaftaran dengan antarmuka elegan, animasi interaktif, serta performa ultra-cepat.",
       description: "ManJadda adalah website Landing Page Pondok Modern yang memadukan nilai-nilai pendidikan Islam kontemporer dengan estetika desain web mutakhir. Dibangun menggunakan arsitektur Astro.js dan Motion Native, platform ini menyajikan profil institusi, program unggulan tahfiz & sains, galeri fasilitas pesantren, alur penerimaan santri baru (PSB), hingga media informasi wali santri secara interaktif, informatif, dan berkecepatan tinggi di semua perangkat.",
