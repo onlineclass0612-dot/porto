@@ -9,7 +9,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -20,20 +20,21 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: #0f172a;
+      background-color: #0b1120;
       color: #1e293b;
-      line-height: 1.5;
-      padding: 40px 20px;
+      line-height: 1.35;
+      padding: 30px 15px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* Action Bar (No Print) */
     .action-bar {
       width: 100%;
-      max-width: 850px;
-      margin-bottom: 24px;
+      max-width: 820px;
+      margin-bottom: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -44,9 +45,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 20px;
+      padding: 9px 18px;
       border-radius: 8px;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
@@ -76,172 +77,223 @@
       color: #ffffff;
     }
 
-    /* CV Document Container */
+    /* Single-Page CV Container (Exact A4 Ratio) */
     .cv-container {
       width: 100%;
-      max-width: 850px;
+      max-width: 820px;
       background: #ffffff;
-      padding: 48px 56px;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      padding: 32px 36px;
+      border-radius: 10px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
     }
 
     /* Header */
     .cv-header {
-      border-bottom: 2px solid #e2e8f0;
-      padding-bottom: 20px;
-      margin-bottom: 24px;
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
     }
 
-    .cv-name {
-      font-size: 28px;
+    .cv-title-box h1 {
+      font-size: 24px;
       font-weight: 800;
       color: #0f172a;
       letter-spacing: -0.5px;
+      line-height: 1.1;
     }
 
-    .cv-role {
-      font-size: 16px;
-      font-weight: 600;
+    .cv-title-box p {
+      font-size: 13px;
+      font-weight: 700;
       color: #0284c7;
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     .cv-contacts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 14px;
-      font-size: 13px;
+      text-align: right;
+      font-size: 11.5px;
       color: #475569;
+      line-height: 1.4;
     }
 
     .cv-contacts a {
       color: #0284c7;
       text-decoration: none;
+      font-weight: 600;
     }
 
-    .cv-contacts a:hover {
-      text-decoration: underline;
+    /* 2-Column Body Layout */
+    .cv-body {
+      display: grid;
+      grid-template-columns: 28% 69%;
+      gap: 3%;
     }
 
-    /* Sections */
-    .cv-section {
-      margin-bottom: 22px;
-    }
-
+    /* Section Headings */
     .section-title {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       color: #0f172a;
       border-bottom: 1.5px solid #cbd5e1;
-      padding-bottom: 4px;
-      margin-bottom: 12px;
+      padding-bottom: 2px;
+      margin-bottom: 8px;
+    }
+
+    .cv-section {
+      margin-bottom: 11px;
+    }
+
+    .cv-section:last-child {
+      margin-bottom: 0;
     }
 
     /* Summary */
     .summary-text {
-      font-size: 13.5px;
+      font-size: 11px;
       color: #334155;
-      line-height: 1.6;
+      line-height: 1.42;
       text-align: justify;
+      margin-bottom: 10px;
     }
 
-    /* Skills Grid */
-    .skills-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
+    /* Left Column Details */
+    .side-block {
+      margin-bottom: 9px;
     }
 
-    .skills-table td {
-      padding: 5px 0;
-      vertical-align: top;
-    }
-
-    .skills-label {
-      width: 140px;
-      font-weight: 700;
-      color: #1e293b;
-    }
-
-    .skills-content {
-      color: #475569;
-    }
-
-    /* Items */
-    .item-block {
-      margin-bottom: 14px;
-    }
-
-    .item-block:last-child {
-      margin-bottom: 0;
-    }
-
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 2px;
-    }
-
-    .item-title {
-      font-size: 14px;
+    .side-title {
+      font-size: 11px;
       font-weight: 700;
       color: #0f172a;
     }
 
-    .item-period {
-      font-size: 12px;
+    .side-sub {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #0284c7;
+    }
+
+    .side-period {
+      font-size: 10px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .side-desc {
+      font-size: 10px;
+      color: #475569;
+      line-height: 1.35;
+      margin-top: 2px;
+    }
+
+    .skill-group {
+      margin-bottom: 6px;
+    }
+
+    .skill-group-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 1px;
+    }
+
+    .skill-list {
+      font-size: 10px;
+      color: #475569;
+      line-height: 1.35;
+    }
+
+    /* Right Column: Projects & Experience */
+    .project-item {
+      margin-bottom: 7.5px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .project-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .project-link {
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #0284c7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .project-tech {
+      font-size: 9.5px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 1.5px;
+    }
+
+    .project-desc {
+      font-size: 10.5px;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    /* Experience Items */
+    .exp-item {
+      margin-bottom: 7px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .exp-role {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .exp-period {
+      font-size: 10px;
       font-weight: 600;
       color: #64748b;
     }
 
-    .item-subtitle {
-      font-size: 13px;
+    .exp-company {
+      font-size: 10.5px;
       font-weight: 600;
       color: #0284c7;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
-    .item-desc {
-      font-size: 13px;
-      color: #475569;
-      margin-bottom: 4px;
-      line-height: 1.5;
-    }
-
-    .item-list {
-      padding-left: 18px;
-      font-size: 12.5px;
+    .exp-list {
+      padding-left: 14px;
+      font-size: 10px;
       color: #334155;
+      line-height: 1.35;
     }
 
-    .item-list li {
-      margin-bottom: 3px;
-      line-height: 1.45;
+    .exp-list li {
+      margin-bottom: 1.5px;
     }
 
-    /* Badge Tags */
-    .tech-tag {
-      display: inline-block;
-      padding: 1px 6px;
-      font-size: 11px;
-      font-family: 'JetBrains Mono', monospace;
-      background: #f1f5f9;
-      color: #0f172a;
-      border: 1px solid #e2e8f0;
-      border-radius: 4px;
-      margin-top: 4px;
-    }
-
-    /* Print Optimizations */
+    /* Strict 1-Page Print Media Styles */
     @media print {
       body {
         background: #ffffff;
         padding: 0;
+        margin: 0;
         color: #000000;
       }
 
@@ -257,12 +309,8 @@
       }
 
       @page {
-        margin: 12mm 15mm;
+        margin: 8mm 10mm;
         size: A4 portrait;
-      }
-
-      .cv-header {
-        border-color: #cbd5e1;
       }
     }
   </style>
@@ -280,155 +328,175 @@
         <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
         <rect x="6" y="14" width="12" height="8"></rect>
       </svg>
-      Cetak / Simpan sebagai PDF
+      Cetak / Simpan PDF (1 Halaman Pas)
     </button>
   </div>
 
-  <!-- Main CV Container -->
+  <!-- Main CV Container (Strict 1 Page) -->
   <div class="cv-container">
     
     <!-- Header -->
     <header class="cv-header">
-      <h1 class="cv-name">Ahmad Afirus (Averous)</h1>
-      <p class="cv-role">Fullstack Web Developer & Software Engineering Student</p>
-      
+      <div class="cv-title-box">
+        <h1>Ahmad Afirus (Averous)</h1>
+        <p>Fullstack Web Developer & Software Engineering Student</p>
+      </div>
       <div class="cv-contacts">
-        <span>📍 Indonesia</span>
-        <span>📧 <a href="mailto:ahmadafirus23@gmail.com">ahmadafirus23@gmail.com</a></span>
-        <span>📱 <a href="https://wa.me/6285765502857" target="_blank">+62 857-6550-2857</a></span>
-        <span>🌐 <a href="https://averous.my.id" target="_blank">Portofolio (averous.my.id)</a></span>
-        <span>💻 <a href="https://github.com/onlineclass0612-dot" target="_blank">GitHub</a></span>
+        <div>📧 <a href="mailto:ahmadafirus23@gmail.com">ahmadafirus23@gmail.com</a> | 📱 <a href="https://wa.me/6285765502857" target="_blank">+62 857-6550-2857</a></div>
+        <div>🌐 <a href="https://averous.my.id" target="_blank">averous.my.id</a> | 💻 <a href="https://github.com/onlineclass0612-dot" target="_blank">github.com/onlineclass0612-dot</a></div>
+        <div>📍 Indonesia (Tersedia Magang & Junior Fullstack / Frontend Roles)</div>
       </div>
     </header>
 
-    <!-- Ringkasan Profesional -->
-    <section class="cv-section">
-      <h2 class="section-title">Ringkasan Profesional</h2>
-      <p class="summary-text">
-        Mahasiswa aktif program studi D4 Rekayasa Perangkat Lunak yang memiliki antusiasme mendalam pada rekayasa perangkat lunak dan arsitektur web modern. Berpengalaman membangun, mengintegrasikan, dan mengelola <strong>6 aplikasi web production-ready</strong> yang berjalan secara live pada server Linux Cloud VPS mandiri (Nginx, SSL, MySQL). Memiliki keahlian kuat dalam ekosistem <strong>React 19, Tailwind CSS, Laravel 11 (RESTful API), dan Astro.js</strong>. Siap berkontribusi secara produktif dan kolaboratif dalam program Magang (Internship) maupun posisi Junior Fullstack / Frontend Developer.
-      </p>
-    </section>
+    <!-- Ringkasan Eksekutif -->
+    <p class="summary-text">
+      Mahasiswa aktif program studi <strong>D4 Rekayasa Perangkat Lunak</strong> yang berpengalaman merancang, mengintegrasikan, dan mengelola <strong>6 aplikasi web production-ready</strong> yang berjalan live di server Linux Cloud VPS mandiri (Nginx, SSL, MySQL). Menguasai arsitektur <strong>React 19, Tailwind CSS, Laravel 11 (RESTful API), dan Astro.js</strong> dengan komitmen tinggi pada clean code dan modularitas sistem.
+    </p>
 
-    <!-- Keahlian Teknis (Tech Stack) -->
-    <section class="cv-section">
-      <h2 class="section-title">Keahlian Teknis (Technical Skills)</h2>
-      <table class="skills-table">
-        <tr>
-          <td class="skills-label">Frontend</td>
-          <td class="skills-content">React.js 19, JavaScript (ES6+), Astro.js, Tailwind CSS, TypeScript, HTML5, CSS3 Modern, Framer Motion</td>
-        </tr>
-        <tr>
-          <td class="skills-label">Backend & Database</td>
-          <td class="skills-content">PHP, Laravel 11, RESTful APIs, Node.js (Express), MySQL, Database Migration & Seeding</td>
-        </tr>
-        <tr>
-          <td class="skills-label">DevOps & Cloud</td>
-          <td class="skills-content">Linux Cloud VPS (Ubuntu), Nginx Web Server, SSL Let's Encrypt, Custom Domain Management</td>
-        </tr>
-        <tr>
-          <td class="skills-label">Tools & Workflow</td>
-          <td class="skills-content">Git & GitHub, Vite, Postman (API Testing), Figma to Code, Clean Architecture</td>
-        </tr>
-      </table>
-    </section>
+    <!-- 2-Column Content Grid -->
+    <div class="cv-body">
+      
+      <!-- Left Column: Pendidikan & Keahlian -->
+      <aside class="left-col">
+        
+        <!-- Pendidikan -->
+        <section class="cv-section">
+          <h2 class="section-title">Pendidikan</h2>
+          <div class="side-block">
+            <div class="side-title">D4 Rekayasa Perangkat Lunak</div>
+            <div class="side-sub">Mahasiswa Aktif</div>
+            <div class="side-period">2023 — Sekarang</div>
+            <p class="side-desc">Fokus: Rekayasa Perangkat Lunak Terapan, Web Fullstack, Basis Data Relasional, & Testing.</p>
+          </div>
+        </section>
 
-    <!-- Proyek Unggulan (Live Deployed Projects) -->
-    <section class="cv-section">
-      <h2 class="section-title">Proyek Unggulan (6 Live Deployed Web Apps)</h2>
+        <!-- Keahlian Teknis -->
+        <section class="cv-section">
+          <h2 class="section-title">Keahlian Teknis</h2>
+          
+          <div class="skill-group">
+            <div class="skill-group-title">Frontend</div>
+            <div class="skill-list">React 19, Astro.js, Tailwind CSS, JavaScript (ES6+), TypeScript, HTML5/CSS3.</div>
+          </div>
 
-      <!-- ManJadda -->
-      <div class="item-block">
-        <div class="item-header">
-          <span class="item-title">ManJadda — Landing Page Pondok Modern</span>
-          <span class="item-period">Live Production</span>
-        </div>
-        <div class="item-subtitle">Astro.js, Motion Native, Tailwind CSS | <a href="https://manjadda.averous.my.id" target="_blank">manjadda.averous.my.id</a></div>
-        <p class="item-desc">Landing page institusi pendidikan modern berkinerja tinggi dengan skor Lighthouse 100 dan animasi interaktif fluid native motion.</p>
-      </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Backend & Database</div>
+            <div class="skill-list">Laravel 11, RESTful APIs, Node.js, PHP, MySQL, Database Migration.</div>
+          </div>
 
-      <!-- Attentio -->
-      <div class="item-block">
-        <div class="item-header">
-          <span class="item-title">Attentio — Sistem Presensi & Kehadiran Terpadu</span>
-          <span class="item-period">Live Production</span>
-        </div>
-        <div class="item-subtitle">Laravel 11, Blade, Tailwind CSS, MySQL | <a href="https://attentio.averous.my.id" target="_blank">attentio.averous.my.id</a></div>
-        <p class="item-desc">Sistem absensi berbasis web dengan rekapitulasi data otomatis, dashboard analitik admin, dan autentikasi multi-user aman.</p>
-      </div>
+          <div class="skill-group">
+            <div class="skill-group-title">DevOps & Cloud</div>
+            <div class="skill-list">Linux Cloud VPS (Ubuntu), Nginx Vhost, SSL Let's Encrypt, DNS.</div>
+          </div>
 
-      <!-- Inventio -->
-      <div class="item-block">
-        <div class="item-header">
-          <span class="item-title">Inventio — Sistem Manajemen Inventaris Terintegrasi</span>
-          <span class="item-period">Live Production</span>
-        </div>
-        <div class="item-subtitle">React SPA, Laravel 11 REST API, MySQL | <a href="https://inv.averous.my.id" target="_blank">inv.averous.my.id</a></div>
-        <p class="item-desc">Aplikasi decoupled fullstack yang mengintegrasikan antarmuka interaktif React dengan backend REST API Laravel untuk pelacakan stok dan mutasi barang.</p>
-      </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Tools & Metodologi</div>
+            <div class="skill-list">Git/GitHub, Vite, Postman, Figma to Code, Clean Architecture.</div>
+          </div>
+        </section>
 
-      <!-- Dreamy Island -->
-      <div class="item-block">
-        <div class="item-header">
-          <span class="item-title">Dreamy Island — Luxury Resort & Villa Booking UI</span>
-          <span class="item-period">Live Production</span>
-        </div>
-        <div class="item-subtitle">React 19, Tailwind CSS, Responsive UI | <a href="https://dreamy-island.averous.my.id" target="_blank">dreamy-island.averous.my.id</a></div>
-        <p class="item-desc">Antarmuka pemesanan vila mewah dengan kalkulator estimasi biaya dinamis, filter kategori kamar, dan desain visual premium.</p>
-      </div>
+        <!-- Kompetensi Utama -->
+        <section class="cv-section">
+          <h2 class="section-title">Kompetensi</h2>
+          <div class="side-desc">
+            • Decoupled SPA & API<br>
+            • Database Normalization<br>
+            • Mobile-First Responsive UI<br>
+            • Performance & SEO Audit
+          </div>
+        </section>
 
-      <!-- CineScope & MaMealApp -->
-      <div class="item-block">
-        <div class="item-header">
-          <span class="item-title">CineScope & MaMealApp — Dynamic API Applications</span>
-          <span class="item-period">Live Production</span>
-        </div>
-        <div class="item-subtitle">React 19, TMDB API, TheMealDB API, Axios | <a href="https://cinescope.averous.my.id" target="_blank">cinescope.averous.my.id</a></div>
-        <p class="item-desc">Aplikasi web dinamis dengan fitur pencarian instan, filter multi-kategori, bookmarking, dan konsumsi RESTful API pihak ketiga.</p>
-      </div>
-    </section>
+      </aside>
 
-    <!-- Pengalaman Praktis & Akademik -->
-    <section class="cv-section">
-      <h2 class="section-title">Pengalaman Proyek & Rekayasa Perangkat Lunak</h2>
+      <!-- Right Column: Proyek & Pengalaman -->
+      <main class="right-col">
+        
+        <!-- Proyek Live Unggulan -->
+        <section class="cv-section">
+          <h2 class="section-title">6 Proyek Web Live di Server Cloud VPS</h2>
 
-      <div class="item-block">
-        <div class="item-header">
-          <span class="item-title">Independent Full-Stack Web Developer</span>
-          <span class="item-period">2024 — Sekarang</span>
-        </div>
-        <div class="item-subtitle">Self-Initiated & Cloud Production Deployments</div>
-        <ul class="item-list">
-          <li>Merancang arsitektur aplikasi dari tahap perancangan basis data relasional hingga implementasi UI/UX.</li>
-          <li>Mengonfigurasi dan mengelola Cloud VPS Linux Ubuntu, Nginx reverse proxy, dan SSL Let's Encrypt secara mandiri.</li>
-          <li>Menerapkan prinsip clean code, modular component architecture, dan Git flow version control.</li>
-        </ul>
-      </div>
+          <!-- ManJadda -->
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-title">1. ManJadda — Landing Page Pondok Modern</span>
+              <a href="https://manjadda.averous.my.id" target="_blank" class="project-link">manjadda.averous.my.id ↗</a>
+            </div>
+            <div class="project-tech">Astro.js • Motion Native • Tailwind CSS • Skor Lighthouse 100</div>
+            <p class="project-desc">Landing page institusi berkecepatan tinggi dengan animasi fluid native motion dan rendering statis instan.</p>
+          </div>
 
-      <div class="item-block">
-        <div class="item-header">
-          <span class="item-title">Proyek Akademik Rekayasa Perangkat Lunak Terapan</span>
-          <span class="item-period">2023 — Sekarang</span>
-        </div>
-        <div class="item-subtitle">Perkuliahan D4 Rekayasa Perangkat Lunak</div>
-        <ul class="item-list">
-          <li>Merancang skema database normalisasi (ERD) dan query optimasi untuk aplikasi manajemen data.</li>
-          <li>Mengembangkan program modular berbasis Object-Oriented Programming (OOP) dan struktur data efisien.</li>
-        </ul>
-      </div>
-    </section>
+          <!-- Attentio -->
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-title">2. Attentio — Sistem Absensi & Kehadiran</span>
+              <a href="https://attentio.averous.my.id" target="_blank" class="project-link">attentio.averous.my.id ↗</a>
+            </div>
+            <div class="project-tech">Laravel 11 • Blade • Tailwind CSS • MySQL • Multi-User Auth</div>
+            <p class="project-desc">Sistem manajemen presensi pegawai dengan rekapitulasi data otomatis, dashboard analitik, dan autentikasi aman.</p>
+          </div>
 
-    <!-- Pendidikan -->
-    <section class="cv-section">
-      <h2 class="section-title">Pendidikan (Education)</h2>
-      <div class="item-block">
-        <div class="item-header">
-          <span class="item-title">D4 Rekayasa Perangkat Lunak (Mahasiswa Aktif)</span>
-          <span class="item-period">2023 — Sekarang</span>
-        </div>
-        <div class="item-subtitle">Politeknik / Perguruan Tinggi di Indonesia</div>
-        <p class="item-desc">Fokus studi: Rekayasa Perangkat Lunak Terapan (Applied Software Engineering), Pemrograman Web Fullstack, Sistem Basis Data Relasional, Desain Pola Arsitektur, dan Pengujian Perangkat Lunak (Software QA/Testing).</p>
-      </div>
-    </section>
+          <!-- Inventio -->
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-title">3. Inventio — Sistem Inventaris Terintegrasi</span>
+              <a href="https://inv.averous.my.id" target="_blank" class="project-link">inv.averous.my.id ↗</a>
+            </div>
+            <div class="project-tech">React SPA • Laravel 11 REST API • MySQL • Decoupled Arch</div>
+            <p class="project-desc">Aplikasi fullstack terpisah untuk manajemen stok barang real-time, mutasi inventaris, dan validasi transaksi.</p>
+          </div>
+
+          <!-- Dreamy Island -->
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-title">4. Dreamy Island — Resort & Villa Booking UI</span>
+              <a href="https://dreamy-island.averous.my.id" target="_blank" class="project-link">dreamy-island.averous.my.id ↗</a>
+            </div>
+            <div class="project-tech">React 19 • Tailwind CSS • Dynamic Estimator • UI/UX</div>
+            <p class="project-desc">Platform pemesanan resor mewah interaktif dengan kalkulator estimasi tarif dan filter kamar dinamis.</p>
+          </div>
+
+          <!-- CineScope & MaMealApp -->
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-title">5. CineScope & MaMealApp — Dynamic Web Apps</span>
+              <a href="https://cinescope.averous.my.id" target="_blank" class="project-link">cinescope.averous.my.id ↗</a>
+            </div>
+            <div class="project-tech">React 19 • TMDB API • TheMealDB API • Axios • Search Engine</div>
+            <p class="project-desc">Aplikasi penjelajah film dan resep dengan pencarian instan, filtering kategori, dan integrasi REST API pihak ketiga.</p>
+          </div>
+        </section>
+
+        <!-- Pengalaman & Praktik Rekayasa -->
+        <section class="cv-section">
+          <h2 class="section-title">Pengalaman Proyek & Rekayasa Perangkat Lunak</h2>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-role">Independent Full-Stack Developer</span>
+              <span class="exp-period">2024 — Sekarang</span>
+            </div>
+            <div class="exp-company">Self-Initiated & Cloud VPS Deployments</div>
+            <ul class="exp-list">
+              <li>Membangun dan men-deploy 6 aplikasi web ke Cloud VPS Linux Ubuntu dengan Nginx reverse proxy dan SSL.</li>
+              <li>Menerapkan arsitektur SPA terpisah dengan Laravel REST API untuk performa rendering tinggi.</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-role">Proyek Akademik Rekayasa Perangkat Lunak</span>
+              <span class="exp-period">2023 — Sekarang</span>
+            </div>
+            <div class="exp-company">Perkuliahan D4 Rekayasa Perangkat Lunak</div>
+            <ul class="exp-list">
+              <li>Merancang skema database normalisasi (ERD) dan modul backend berbasis Object-Oriented Programming.</li>
+            </ul>
+          </div>
+        </section>
+
+      </main>
+
+    </div>
 
   </div>
 
