@@ -1,5 +1,6 @@
 import React from 'react';
-import { Quote, Star, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Quote, Star } from 'lucide-react';
 
 export const TestimonialsSection = ({ testimonials }) => {
   return (
@@ -10,21 +11,32 @@ export const TestimonialsSection = ({ testimonials }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center space-y-3 mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center space-y-3 mb-12"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs tracking-wider uppercase">
             <span>// 05. SOCIAL PROOF & ENDORSEMENTS</span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-slate-100">
             Apa Kata <span className="cyber-gradient-text">Kolaborator & Klien</span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* Testimonials Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {testimonials.map((item, index) => (
-            <div
+            <motion.div
               key={index}
-              className="glass-card p-6 sm:p-8 rounded-2xl border border-slate-800 hover:border-cyan-500/40 relative flex flex-col justify-between space-y-6 text-left group"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              whileHover={{ y: -5 }}
+              className="glass-card p-6 sm:p-8 rounded-2xl border border-slate-800 hover:border-cyan-500/40 relative flex flex-col justify-between space-y-6 text-left group shadow-lg"
             >
               {/* Top Quote Icon & Stars */}
               <div className="flex items-center justify-between">
@@ -57,7 +69,7 @@ export const TestimonialsSection = ({ testimonials }) => {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -65,3 +77,5 @@ export const TestimonialsSection = ({ testimonials }) => {
     </section>
   );
 };
+
+export default TestimonialsSection;

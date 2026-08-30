@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { 
   Mail, 
   Send, 
@@ -9,9 +10,8 @@ import {
   PhoneCall,
   AlertCircle
 } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './Icons';
+import { GithubIcon, InstagramIcon, ThreadsIcon } from './Icons';
 import confetti from 'canvas-confetti';
-
 
 export const ContactSection = ({ personal }) => {
   const [formData, setFormData] = useState({
@@ -90,7 +90,13 @@ export const ContactSection = ({ personal }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center space-y-3 mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center space-y-3 mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs tracking-wider uppercase">
             <span>// 06. GET IN TOUCH</span>
           </div>
@@ -100,14 +106,20 @@ export const ContactSection = ({ personal }) => {
           <p className="text-slate-400 max-w-2xl text-sm sm:text-base leading-relaxed">
             Punya ide proyek menarik, peluang karir, atau ingin berdiskusi seputar frontend development? Kirimkan pesan sekarang!
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start max-w-6xl mx-auto">
           
           {/* Left Column: Direct Info Cards */}
-          <div className="lg:col-span-5 space-y-6 text-left">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-5 space-y-6 text-left"
+          >
             
-            <div className="glass-panel p-6 sm:p-7 rounded-2xl border border-slate-800 space-y-6">
+            <div className="glass-panel p-6 sm:p-7 rounded-2xl border border-slate-800 space-y-6 shadow-xl">
               <h3 className="font-heading text-xl font-bold text-slate-100 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-cyan-400" />
                 Informasi Kontak Langsung
@@ -115,8 +127,9 @@ export const ContactSection = ({ personal }) => {
               
               <div className="space-y-4">
                 {/* Email Direct */}
-                <a
+                <motion.a
                   href={`mailto:${personal.email}`}
+                  whileHover={{ x: 4, scale: 1.02 }}
                   className="flex items-center gap-4 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-900 transition-colors group"
                 >
                   <div className="p-3 rounded-lg bg-cyan-500/10 text-cyan-400 group-hover:scale-110 transition-transform">
@@ -128,13 +141,14 @@ export const ContactSection = ({ personal }) => {
                       {personal.email}
                     </div>
                   </div>
-                </a>
+                </motion.a>
 
                 {/* WhatsApp Direct */}
-                <a
+                <motion.a
                   href={`https://wa.me/${personal.whatsapp.replace(/[^0-9]/g, '')}?text=Halo%20Averous,%20saya%20tertarik%20dengan%20portofolio%20anda`}
                   target="_blank"
                   rel="noreferrer"
+                  whileHover={{ x: 4, scale: 1.02 }}
                   className="flex items-center gap-4 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 hover:bg-slate-900 transition-colors group"
                 >
                   <div className="p-3 rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:scale-110 transition-transform">
@@ -146,7 +160,7 @@ export const ContactSection = ({ personal }) => {
                       {personal.whatsapp}
                     </div>
                   </div>
-                </a>
+                </motion.a>
 
                 {/* Location */}
                 <div className="flex items-center gap-4 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
@@ -174,35 +188,61 @@ export const ContactSection = ({ personal }) => {
               <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
                 <span className="font-mono text-xs text-slate-400">Ikuti Profil:</span>
                 <div className="flex items-center gap-2">
-                  <a
+                  <motion.a
                     href={personal.github}
                     target="_blank"
                     rel="noreferrer"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
                     className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 hover:border-cyan-500/40 transition-colors"
                   >
                     <GithubIcon className="w-4 h-4" />
-                  </a>
-                  <a
-                    href={personal.linkedin}
+                  </motion.a>
+                  <motion.a
+                    href={personal.instagram}
                     target="_blank"
                     rel="noreferrer"
+                    aria-label="Instagram Profile"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
                     className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 hover:border-cyan-500/40 transition-colors"
                   >
-                    <LinkedinIcon className="w-4 h-4" />
-                  </a>
+                    <InstagramIcon className="w-4 h-4" />
+                  </motion.a>
+                  <motion.a
+                    href={personal.threads}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Threads Profile"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 hover:border-cyan-500/40 transition-colors"
+                  >
+                    <ThreadsIcon className="w-4 h-4" />
+                  </motion.a>
                 </div>
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
           {/* Right Column: Interactive Form */}
-          <div className="lg:col-span-7">
-            <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-800 text-left relative">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7"
+          >
+            <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-800 text-left relative shadow-xl">
               
               {isSubmitted ? (
                 /* Success Feedback Card */
-                <div className="py-12 flex flex-col items-center justify-center text-center space-y-4 animate-fade-in">
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="py-12 flex flex-col items-center justify-center text-center space-y-4"
+                >
                   <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shadow-xl shadow-emerald-500/20 animate-bounce">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
@@ -212,13 +252,15 @@ export const ContactSection = ({ personal }) => {
                   <p className="text-slate-300 text-sm max-w-md leading-relaxed">
                     Terima kasih telah menghubungi. Pesan Anda telah tercatat dan saya akan merespon secepat mungkin.
                   </p>
-                  <button
+                  <motion.button
                     onClick={() => setIsSubmitted(false)}
-                    className="mt-4 px-6 py-2.5 rounded-xl text-xs font-mono font-semibold bg-slate-900 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="mt-4 px-6 py-2.5 rounded-xl text-xs font-mono font-semibold bg-slate-900 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 transition-colors cursor-pointer"
                   >
                     &lt; KIRIM PESAN LAIN /&gt;
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               ) : (
                 /* Contact Form */
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -229,12 +271,14 @@ export const ContactSection = ({ personal }) => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Name */}
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-mono text-slate-300 uppercase">
+                      <label htmlFor="contact-name" className="block text-xs font-mono text-slate-300 uppercase font-medium">
                         Nama Lengkap *
                       </label>
                       <input
+                        id="contact-name"
                         type="text"
                         name="name"
+                        autoComplete="name"
                         required
                         value={formData.name}
                         onChange={handleChange}
@@ -245,12 +289,14 @@ export const ContactSection = ({ personal }) => {
 
                     {/* Email */}
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-mono text-slate-300 uppercase">
+                      <label htmlFor="contact-email" className="block text-xs font-mono text-slate-300 uppercase font-medium">
                         Alamat Email *
                       </label>
                       <input
+                        id="contact-email"
                         type="email"
                         name="email"
+                        autoComplete="email"
                         required
                         value={formData.email}
                         onChange={handleChange}
@@ -262,12 +308,14 @@ export const ContactSection = ({ personal }) => {
 
                   {/* Subject */}
                   <div className="space-y-1.5">
-                    <label className="block text-xs font-mono text-slate-300 uppercase">
+                    <label htmlFor="contact-subject" className="block text-xs font-mono text-slate-300 uppercase font-medium">
                       Subjek Pesan *
                     </label>
                     <input
+                      id="contact-subject"
                       type="text"
                       name="subject"
+                      autoComplete="off"
                       required
                       value={formData.subject}
                       onChange={handleChange}
@@ -278,10 +326,11 @@ export const ContactSection = ({ personal }) => {
 
                   {/* Message */}
                   <div className="space-y-1.5">
-                    <label className="block text-xs font-mono text-slate-300 uppercase">
+                    <label htmlFor="contact-message" className="block text-xs font-mono text-slate-300 uppercase font-medium">
                       Detail Pesan *
                     </label>
                     <textarea
+                      id="contact-message"
                       name="message"
                       rows={4}
                       required
@@ -294,19 +343,25 @@ export const ContactSection = ({ personal }) => {
 
                   {/* Error Notification Alert */}
                   {errorMessage && (
-                    <div className="p-3.5 rounded-xl bg-red-950/40 border border-red-500/40 flex items-start gap-3 text-red-300 text-xs font-mono animate-fade-in">
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-3.5 rounded-xl bg-red-950/40 border border-red-500/40 flex items-start gap-3 text-red-300 text-xs font-mono"
+                    >
                       <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
                       <div>
                         <div className="font-semibold text-red-200">Gagal Mengirim:</div>
                         <p className="mt-0.5 text-red-300/90">{errorMessage}</p>
                       </div>
-                    </div>
+                    </motion.div>
                   )}
 
                   {/* Submit Button */}
-                  <button
+                  <motion.button
                     type="submit"
                     disabled={isSubmitting}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
                     className="w-full py-3.5 rounded-xl font-semibold text-sm text-slate-950 bg-gradient-to-r from-cyan-400 via-teal-300 to-purple-400 hover:from-cyan-300 hover:to-purple-300 transition-all duration-300 shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     {isSubmitting ? (
@@ -317,12 +372,12 @@ export const ContactSection = ({ personal }) => {
                         <Send className="w-4 h-4" />
                       </>
                     )}
-                  </button>
+                  </motion.button>
                 </form>
               )}
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
@@ -330,3 +385,5 @@ export const ContactSection = ({ personal }) => {
     </section>
   );
 };
+
+export default ContactSection;

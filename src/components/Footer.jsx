@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUp, Mail, Heart, Code2 } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, TwitterIcon } from './Icons';
+import { GithubIcon, InstagramIcon, ThreadsIcon } from './Icons';
 
 
 export const Footer = ({ personal }) => {
@@ -31,7 +31,7 @@ export const Footer = ({ personal }) => {
               </span>
             </div>
             <p className="text-slate-400 text-xs sm:text-sm max-w-md leading-relaxed">
-              Frontend Developer yang berdedikasi membangun aplikasi web modern, cepat, dan estetis menggunakan React, Tailwind CSS, dan ekosistem Laravel.
+              Mahasiswa aktif Teknik Informatika & Fullstack Developer yang berdedikasi membangun aplikasi web modern, cepat, dan production-ready menggunakan React, Laravel, dan Astro.js.
             </p>
           </div>
 
@@ -52,29 +52,29 @@ export const Footer = ({ personal }) => {
               <a
                 href={personal.github}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="GitHub"
                 className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 transition-colors"
               >
                 <GithubIcon className="w-4 h-4" />
               </a>
               <a
-                href={personal.linkedin}
+                href={personal.instagram}
                 target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
                 className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 transition-colors"
               >
-                <LinkedinIcon className="w-4 h-4" />
+                <InstagramIcon className="w-4 h-4" />
               </a>
               <a
-                href={personal.twitter}
+                href={personal.threads}
                 target="_blank"
-                rel="noreferrer"
-                aria-label="Twitter"
+                rel="noopener noreferrer"
+                aria-label="Threads"
                 className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 transition-colors"
               >
-                <TwitterIcon className="w-4 h-4" />
+                <ThreadsIcon className="w-4 h-4" />
               </a>
               <a
                 href={`mailto:${personal.email}`}

@@ -1,18 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { portfolioData } from './data/portfolioData';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
-import { AboutSection } from './components/AboutSection';
-import { SkillsSection } from './components/SkillsSection';
-import { ProjectsSection } from './components/ProjectsSection';
-import { ExperienceSection } from './components/ExperienceSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { ContactSection } from './components/ContactSection';
-import { Footer } from './components/Footer';
+
+// Lazy load offscreen sections for massive mobile performance boost
+const AboutSection = lazy(() => import('./components/AboutSection').then(m => ({ default: m.AboutSection })));
+const SkillsSection = lazy(() => import('./components/SkillsSection').then(m => ({ default: m.SkillsSection })));
+const ProjectsSection = lazy(() => import('./components/ProjectsSection').then(m => ({ default: m.ProjectsSection })));
+const ExperienceSection = lazy(() => import('./components/ExperienceSection').then(m => ({ default: m.ExperienceSection })));
+const TestimonialsSection = lazy(() => import('./components/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
+const ContactSection = lazy(() => import('./components/ContactSection').then(m => ({ default: m.ContactSection })));
+const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
+const CursorGlow = lazy(() => import('./components/CursorGlow').then(m => ({ default: m.CursorGlow })));
+
+// Lightweight non-blocking placeholder
+const SectionFallback = () => <div className="w-full min-h-[300px]" />;
 
 export function App() {
   useEffect(() => {
-    // Pastikan light-theme dihilangkan dari root element
+    // Pastikan tema bersih di root element
     document.documentElement.classList.remove('light-theme');
     localStorage.removeItem('porto_theme');
   }, []);
@@ -20,6 +26,11 @@ export function App() {
   return (
     <div className="min-h-screen relative selection:bg-cyan-500/30 selection:text-cyan-200 bg-[#06080F] text-slate-100">
       
+      {/* Interactive Cyber Neon Glow Follower (Desktop only via lazy load) */}
+      <Suspense fallback={null}>
+        <CursorGlow />
+      </Suspense>
+
       {/* Cyber Grid Background Matrix */}
       <div className="fixed inset-0 cyber-grid pointer-events-none z-0 opacity-80" />
 
@@ -32,19 +43,41 @@ export function App() {
         <Navbar personal={portfolioData.personal} />
 
         <main>
+          {/* Critical Above-the-fold Content (Instant FCP & LCP) */}
           <HeroSection personal={portfolioData.personal} />
-          <AboutSection about={portfolioData.about} personal={portfolioData.personal} />
-          <SkillsSection skills={portfolioData.skills} />
-          <ProjectsSection projects={portfolioData.projects} />
-          <ExperienceSection 
-            experiences={portfolioData.experiences} 
-            education={portfolioData.education} 
-          />
-          <TestimonialsSection testimonials={portfolioData.testimonials} />
-          <ContactSection personal={portfolioData.personal} />
+
+          {/* Lazily Loaded Below-the-fold Sections (Zero TBT Penalty) */}
+          <Suspense fallback={<SectionFallback />}>
+            <AboutSection about={portfolioData.about} personal={portfolioData.personal} />
+          </Suspense>
+
+          <Suspense fallback={<SectionFallback />}>
+            <SkillsSection skills={portfolioData.skills} />
+          </Suspense>
+
+          <Suspense fallback={<SectionFallback />}>
+            <ProjectsSection projects={portfolioData.projects} />
+          </Suspense>
+
+          <Suspense fallback={<SectionFallback />}>
+            <ExperienceSection 
+              experiences={portfolioData.experiences} 
+              education={portfolioData.education} 
+            />
+          </Suspense>
+
+          <Suspense fallback={<SectionFallback />}>
+            <TestimonialsSection testimonials={portfolioData.testimonials} />
+          </Suspense>
+
+          <Suspense fallback={<SectionFallback />}>
+            <ContactSection personal={portfolioData.personal} />
+          </Suspense>
         </main>
 
-        <Footer personal={portfolioData.personal} />
+        <Suspense fallback={null}>
+          <Footer personal={portfolioData.personal} />
+        </Suspense>
       </div>
 
     </div>

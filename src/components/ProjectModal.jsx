@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { X, ExternalLink, CheckCircle2, Layers, Zap, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { X, CheckCircle2, Layers, Zap, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from './Icons';
-
 
 export const ProjectModal = ({ project, onClose }) => {
   useEffect(() => {
@@ -20,22 +20,42 @@ export const ProjectModal = ({ project, onClose }) => {
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-[#04060B]/80 light-theme:bg-slate-900/40 backdrop-blur-xl animate-fade-in project-modal-backdrop">
+    <div 
+      role="dialog" 
+      aria-modal="true" 
+      aria-labelledby="modal-project-title"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto project-modal-backdrop"
+    >
       
-      {/* Click outside backdrop */}
-      <div className="fixed inset-0" onClick={onClose} />
+      {/* Click outside backdrop with Framer Motion */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
+        className="fixed inset-0 bg-[#04060B]/80 backdrop-blur-xl" 
+        onClick={onClose} 
+      />
 
-      {/* Modal Content Box */}
-      <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl glass-panel border border-cyan-500/40 p-6 sm:p-8 text-left shadow-2xl shadow-cyan-950/60 z-10 space-y-6">
+      {/* Modal Content Box with Spring Animation */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.92, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 20 }}
+        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl glass-panel border border-cyan-500/40 p-6 sm:p-8 text-left shadow-2xl shadow-cyan-950/60 z-10 space-y-6"
+      >
         
         {/* Close Button */}
-        <button
+        <motion.button
           onClick={onClose}
-          aria-label="Close Modal"
-          className="absolute top-5 right-5 p-2 rounded-xl bg-slate-900/90 border border-slate-700 text-slate-400 hover:text-cyan-300 hover:border-cyan-500/50 transition-colors z-20"
+          aria-label="Tutup jendela studi kasus"
+          whileHover={{ scale: 1.1, rotate: 90 }}
+          whileTap={{ scale: 0.9 }}
+          className="absolute top-5 right-5 p-2 rounded-xl bg-slate-900/90 border border-slate-700 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/50 transition-colors z-20 cursor-pointer"
         >
           <X className="w-5 h-5" />
-        </button>
+        </motion.button>
 
         {/* Modal Header */}
         <div className="space-y-2 pr-10">
@@ -47,10 +67,10 @@ export const ProjectModal = ({ project, onClose }) => {
               {project.badge || "Project Case Study"}
             </span>
           </div>
-          <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-100">
+          <h3 id="modal-project-title" className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-100">
             {project.title}
           </h3>
-          <p className="text-slate-400 text-sm sm:text-base font-medium">
+          <p className="text-slate-300 text-sm sm:text-base font-medium">
             {project.subtitle}
           </p>
         </div>
@@ -59,7 +79,11 @@ export const ProjectModal = ({ project, onClose }) => {
         <div className="relative rounded-xl overflow-hidden border border-slate-800 aspect-video group">
           <img
             src={project.image}
-            alt={project.title}
+            alt={`Detail antarmuka dan studi kasus ${project.title}`}
+            width="800"
+            height="450"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#06080F] via-transparent to-transparent opacity-80" />
@@ -82,7 +106,7 @@ export const ProjectModal = ({ project, onClose }) => {
             <Layers className="w-4 h-4 text-cyan-400" />
             Ringkasan & Solusi
           </h4>
-          <p className="text-slate-300 text-sm leading-relaxed">
+          <p className="text-slate-200 text-sm leading-relaxed">
             {project.description}
           </p>
         </div>
@@ -96,7 +120,7 @@ export const ProjectModal = ({ project, onClose }) => {
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {project.highlights.map((feat, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                   <span>{feat}</span>
                 </div>
@@ -107,7 +131,7 @@ export const ProjectModal = ({ project, onClose }) => {
 
         {/* Tech Stack Used */}
         <div className="space-y-2.5 pt-2 border-t border-slate-800">
-          <span className="font-mono text-xs text-slate-400 font-semibold uppercase">
+          <span className="font-mono text-xs text-slate-300 font-semibold uppercase">
             Teknologi & Tooling:
           </span>
           <div className="flex flex-wrap gap-2">
@@ -125,31 +149,37 @@ export const ProjectModal = ({ project, onClose }) => {
         {/* Action Buttons Footer */}
         <div className="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-slate-800">
           {project.githubUrl && (
-            <a
+            <motion.a
               href={project.githubUrl}
               target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-xs text-slate-200 bg-slate-900 border border-slate-700 hover:border-cyan-500 hover:text-cyan-300 transition-colors"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-xs text-slate-200 bg-slate-900 border border-slate-700 hover:border-cyan-500 hover:text-cyan-300 transition-colors shadow-sm"
             >
               <GithubIcon className="w-4 h-4" />
               <span>Source Code (GitHub)</span>
-            </a>
+            </motion.a>
           )}
 
           {project.liveUrl && (
-            <a
+            <motion.a
               href={project.liveUrl}
               target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-xs text-slate-950 bg-gradient-to-r from-cyan-400 to-purple-400 hover:from-cyan-300 hover:to-purple-300 shadow-md shadow-cyan-500/20 transition-all"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-xs text-slate-950 bg-gradient-to-r from-cyan-400 to-purple-400 hover:from-cyan-300 hover:to-purple-300 shadow-md shadow-cyan-500/25 transition-all"
             >
               <span>Buka Live Demo</span>
               <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </motion.a>
           )}
         </div>
 
-      </div>
+      </motion.div>
     </div>
   );
 };
+
+export default ProjectModal;
