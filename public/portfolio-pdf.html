@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio Dokumen Web Development — Ahmad Afirus (Averous)</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #060a17;
+      color: #1e293b;
+      line-height: 1.45;
+      padding: 30px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Action Bar (Hanya di browser) */
+    .action-bar {
+      width: 100%;
+      max-width: 800px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00f0ff, #8b5cf6);
+      color: #060a17;
+      border: none;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(0, 240, 255, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 240, 255, 0.6);
+    }
+
+    .btn-secondary {
+      background: #0f172a;
+      color: #94a3b8;
+      border: 1px solid #334155;
+    }
+
+    .btn-secondary:hover {
+      background: #1e293b;
+      color: #ffffff;
+    }
+
+    /* Multi-Page A4 Container */
+    .deck-container {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .a4-page {
+      width: 100%;
+      min-height: 1120px;
+      background: #ffffff;
+      padding: 50px 52px;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    /* Page Footer */
+    .page-footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .page-footer a {
+      color: #0284c7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Headings */
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ==========================================================================
+       PAGE 1: COVER PAGE
+       ========================================================================== */
+    .cover-page {
+      background: linear-gradient(145deg, #090e1d 0%, #06080f 100%);
+      color: #f8fafc;
+      border: 1px solid rgba(0, 240, 255, 0.2);
+    }
+
+    .cover-top-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: #00f0ff;
+      border-radius: 20px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .cover-main-title {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .cover-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: #38bdf8;
+      margin-bottom: 24px;
+    }
+
+    .cover-desc {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.6;
+      max-width: 600px;
+      margin-bottom: 36px;
+    }
+
+    /* Cover Stats Matrix */
+    .cover-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: left;
+    }
+
+    .stat-val {
+      font-size: 26px;
+      font-weight: 800;
+      color: #00f0ff;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-label {
+      font-size: 11.5px;
+      color: #cbd5e1;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .stat-sub {
+      font-size: 10px;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Cover Info Footer */
+    .cover-contacts-box {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 18px 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+
+    .cover-contacts-box a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       PAGE 2: TECH STACK & OVERVIEW
+       ========================================================================== */
+    .section-header-box {
+      margin-bottom: 24px;
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .section-main-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #0284c7;
+      font-weight: 700;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .stack-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px;
+      background: #f8fafc;
+    }
+
+    .stack-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tech-pill {
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #0f172a;
+    }
+
+    .value-props-box {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+    }
+
+    .value-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #0369a1;
+      margin-bottom: 8px;
+    }
+
+    .value-list {
+      padding-left: 18px;
+      font-size: 12px;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       PAGES 3, 4, 5: PROJECT SHOWCASES (2 Projects per Page)
+       ========================================================================== */
+    .project-card-block {
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .project-card-block:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .project-card-grid {
+      display: grid;
+      grid-template-columns: 42% 58%;
+    }
+
+    .project-img-box {
+      background: #090d18;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .project-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .project-content-box {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .proj-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .proj-name {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .proj-category {
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .proj-subtitle {
+      font-size: 12px;
+      font-weight: 600;
+      color: #0284c7;
+      margin-bottom: 8px;
+    }
+
+    .proj-desc {
+      font-size: 11.5px;
+      color: #475569;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .proj-features {
+      padding-left: 15px;
+      font-size: 11px;
+      color: #334155;
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+
+    .proj-bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 8px;
+    }
+
+    .proj-tags {
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #64748b;
+    }
+
+    .live-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #0284c7;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      transition: background 0.2s;
+    }
+
+    .live-link-btn:hover {
+      background: #0369a1;
+    }
+
+    /* Final Contact Callout on Page 5 */
+    .final-contact-box {
+      background: linear-gradient(135deg, #090e1d, #0f172a);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 10px;
+      padding: 16px 20px;
+      color: #f8fafc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .final-contact-text h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #00f0ff;
+    }
+
+    .final-contact-text p {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    .final-cta-btn {
+      padding: 8px 16px;
+      background: #00f0ff;
+      color: #090e1d;
+      font-weight: 800;
+      font-size: 11px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Print Styles (Exact Multi-Page PDF) */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+        margin: 0;
+        color: #000000;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .deck-container {
+        max-width: 100%;
+        gap: 0;
+      }
+
+      .a4-page {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 16mm 18mm;
+        margin: 0;
+        page-break-after: always;
+        min-height: 297mm;
+        height: 297mm;
+      }
+
+      .cover-page {
+        background: #090e1d !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Action Bar (Hanya di browser) -->
+  <div class="action-bar no-print">
+    <a href="/" class="btn btn-secondary">
+      &larr; Kembali ke Portofolio
+    </a>
+    <button onclick="window.print()" class="btn btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V2h12v7"></path>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <rect x="6" y="14" width="12" height="8"></rect>
+      </svg>
+      Cetak / Simpan sebagai PDF Dokumen
+    </button>
+  </div>
+
+  <!-- Multi-Page Deck Container -->
+  <div class="deck-container">
+
+    <!-- ==========================================================================
+         PAGE 1: COVER PAGE
+         ========================================================================== -->
+    <div class="a4-page cover-page">
+      <div>
+        <div class="cover-top-badge">
+          // OFFICIAL WEB DEVELOPMENT PORTFOLIO
+        </div>
+        
+        <h1 class="cover-main-title">
+          Ahmad Afirus<br />(Averous)
+        </h1>
+        
+        <div class="cover-subtitle">
+          Fullstack Web Developer & Software Engineering Student
+        </div>
+
+        <p class="cover-desc">
+          Dokumen portofolio resmi mahasiswa aktif program studi <strong>D4 Rekayasa Perangkat Lunak</strong>. Memiliki spesialisasi dalam merancang, membangun, dan men-deploy <strong>6 aplikasi web production-ready</strong> secara mandiri pada server Linux Cloud VPS (Nginx, SSL, MySQL).
+        </p>
+
+        <!-- Stats Matrix -->
+        <div class="cover-stats-grid">
+          <div class="stat-card">
+            <div class="stat-val">6+</div>
+            <div class="stat-label">Live Deployed Apps</div>
+            <div class="stat-sub">Self-Hosted Cloud VPS</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">12+</div>
+            <div class="stat-label">Technologies Mastered</div>
+            <div class="stat-sub">React 19, Laravel, Astro</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">100%</div>
+            <div class="stat-label">Production Ready</div>
+            <div class="stat-sub">Clean Modular Code</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Contacts on Cover -->
+      <div>
+        <div class="cover-contacts-box">
+          <div>📧 <a href="mailto:ahmadafirus23@gmail.com">ahmadafirus23@gmail.com</a></div>
+          <div>📱 <a href="https://wa.me/6285765502857" target="_blank">+62 857-6550-2857</a></div>
+          <div>🌐 <a href="https://averous.my.id" target="_blank">averous.my.id</a></div>
+          <div>💻 <a href="https://github.com/onlineclass0612-dot" target="_blank">GitHub Profile</a></div>
+        </div>
+
+        <div class="page-footer" style="border-color: rgba(255,255,255,0.1); color: #64748b; margin-top: 16px;">
+          <span>Ahmad Afirus — Web Development Portfolio</span>
+          <span>Halaman 01 / 05</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         PAGE 2: TECH STACK & ARSITEKTUR
+         ========================================================================== -->
+    <div class="a4-page">
+      <div>
+        <div class="section-header-box">
+          <h2 class="section-main-title">Tech Stack & Arsitektur Sistem</h2>
+          <span class="section-tag">// 01. CORE COMPETENCIES</span>
+        </div>
+
+        <p style="font-size: 12.5px; color: #475569; margin-bottom: 20px; line-height: 1.5;">
+          Penguasaan ekosistem teknologi modern dari perancangan frontend interaktif yang cepat hingga konfigurasi backend REST API dan manajemen infrastruktur server Linux.
+        </p>
+
+        <!-- Tech Stack 4-Grid -->
+        <div class="stack-grid">
+          <div class="stack-card">
+            <div class="stack-card-title">🌐 Frontend Development</div>
+            <div class="tag-cloud">
+              <span class="tech-pill">React.js 19</span>
+              <span class="tech-pill">Astro.js</span>
+              <span class="tech-pill">Tailwind CSS</span>
+              <span class="tech-pill">JavaScript ES6+</span>
+              <span class="tech-pill">TypeScript</span>
+              <span class="tech-pill">HTML5 & CSS3</span>
+              <span class="tech-pill">Framer Motion</span>
+            </div>
+          </div>
+
+          <div class="stack-card">
+            <div class="stack-card-title">⚙️ Backend & Database</div>
+            <div class="tag-cloud">
+              <span class="tech-pill">Laravel 11</span>
+              <span class="tech-pill">RESTful APIs</span>
+              <span class="tech-pill">Node.js (Express)</span>
+              <span class="tech-pill">PHP 8.2+</span>
+              <span class="tech-pill">MySQL Database</span>
+              <span class="tech-pill">Database Migration</span>
+            </div>
+          </div>
+
+          <div class="stack-card">
+            <div class="stack-card-title">☁️ Cloud VPS & DevOps</div>
+            <div class="tag-cloud">
+              <span class="tech-pill">Linux Ubuntu VPS</span>
+              <span class="tech-pill">Nginx Virtual Host</span>
+              <span class="tech-pill">SSL Let's Encrypt</span>
+              <span class="tech-pill">Custom Domain & DNS</span>
+              <span class="tech-pill">CloudPanel / SSH</span>
+            </div>
+          </div>
+
+          <div class="stack-card">
+            <div class="stack-card-title">🛠️ Tools & Metodologi</div>
+            <div class="tag-cloud">
+              <span class="tech-pill">Git & GitHub</span>
+              <span class="tech-pill">Vite Build Tool</span>
+              <span class="tech-pill">Postman Testing</span>
+              <span class="tech-pill">Figma to Code</span>
+              <span class="tech-pill">Decoupled Architecture</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Value Propositions -->
+        <div class="value-props-box">
+          <div class="value-title">💡 Nilai Utama & Standar Rekayasa Perangkat Lunak:</div>
+          <ul class="value-list">
+            <li><strong>Decoupled Architecture:</strong> Terbiasa memisahkan Single Page Application (React) dengan backend REST API (Laravel) untuk skalabilitas tinggi.</li>
+            <li><strong>Production-Grade Deployment:</strong> Tidak hanya menjalankan di localhost, seluruh 6 proyek di-deploy dan berjalan live di server VPS mandiri.</li>
+            <li><strong>Performance & SEO First:</strong> Mengoptimalkan Core Web Vitals, kompresi aset WebP, dan skor Lighthouse hingga 100.</li>
+            <li><strong>Clean & Modular Code:</strong> Kode terstruktur rapi mengikuti standar industri, mudah di-maintain, dan siap kolaborasi tim.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <span>Ahmad Afirus — Web Development Portfolio</span>
+        <span>Halaman 02 / 05</span>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         PAGE 3: PROJECTS 1 & 2 (ManJadda & Attentio)
+         ========================================================================== -->
+    <div class="a4-page">
+      <div>
+        <div class="section-header-box">
+          <h2 class="section-main-title">Showcase Proyek Live (1 & 2)</h2>
+          <span class="section-tag">// 02. FEATURED PROJECTS</span>
+        </div>
+
+        <!-- Project 1: ManJadda -->
+        <div class="project-card-block">
+          <div class="project-card-grid">
+            <div class="project-img-box">
+              <img src="/mockups/manjadda-mockup.jpg" alt="ManJadda Landing Page Mockup" />
+            </div>
+            <div class="project-content-box">
+              <div>
+                <div class="proj-title-row">
+                  <span class="proj-name">01. ManJadda</span>
+                  <span class="proj-category">Astro.js Landing Page</span>
+                </div>
+                <div class="proj-subtitle">Landing Page Institusi Modern Berkecepatan Tinggi</div>
+                <p class="proj-desc">
+                  Website landing page pondok modern dengan performa ultra-cepat, skor Lighthouse 100, dan integrasi animasi native motion yang halus.
+                </p>
+                <ul class="proj-features">
+                  <li>Arsitektur pulau (*Astro Islands*) untuk nol muatan JavaScript berlebih.</li>
+                  <li>Animasi interaktif fluid native motion dan responsive mobile-first.</li>
+                </ul>
+              </div>
+              <div class="proj-bottom-row">
+                <span class="proj-tags">Astro.js • Motion Native • Tailwind CSS</span>
+                <a href="https://manjadda.averous.my.id" target="_blank" class="live-link-btn">Buka Live Demo ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Attentio -->
+        <div class="project-card-block">
+          <div class="project-card-grid">
+            <div class="project-img-box">
+              <img src="/mockups/attentio-mockup.jpg" alt="Attentio Attendance System Mockup" />
+            </div>
+            <div class="project-content-box">
+              <div>
+                <div class="proj-title-row">
+                  <span class="proj-name">02. Attentio</span>
+                  <span class="proj-category">Laravel Web App</span>
+                </div>
+                <div class="proj-subtitle">Sistem Manajemen Presensi & Kehadiran Terpadu</div>
+                <p class="proj-desc">
+                  Aplikasi absensi berbasis web dengan rekapitulasi data otomatis, dashboard analitik admin, dan autentikasi multi-level aman.
+                </p>
+                <ul class="proj-features">
+                  <li>Autentikasi role-based (Admin & Karyawan) dengan proteksi CSRF.</li>
+                  <li>Manajemen shift kerja dan ekspor laporan kehadiran otomatis.</li>
+                </ul>
+              </div>
+              <div class="proj-bottom-row">
+                <span class="proj-tags">Laravel 11 • Blade • Tailwind • MySQL</span>
+                <a href="https://attentio.averous.my.id" target="_blank" class="live-link-btn">Buka Live Demo ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <span>Ahmad Afirus — Web Development Portfolio</span>
+        <span>Halaman 03 / 05</span>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         PAGE 4: PROJECTS 3 & 4 (Inventio & Dreamy Island)
+         ========================================================================== -->
+    <div class="a4-page">
+      <div>
+        <div class="section-header-box">
+          <h2 class="section-main-title">Showcase Proyek Live (3 & 4)</h2>
+          <span class="section-tag">// 03. FEATURED PROJECTS</span>
+        </div>
+
+        <!-- Project 3: Inventio -->
+        <div class="project-card-block">
+          <div class="project-card-grid">
+            <div class="project-img-box">
+              <img src="/mockups/inventio-mockup.jpg" alt="Inventio Inventory System Mockup" />
+            </div>
+            <div class="project-content-box">
+              <div>
+                <div class="proj-title-row">
+                  <span class="proj-name">03. Inventio</span>
+                  <span class="proj-category">Decoupled Fullstack</span>
+                </div>
+                <div class="proj-subtitle">Sistem Manajemen Inventaris & Mutasi Barang</div>
+                <p class="proj-desc">
+                  Aplikasi decoupled fullstack yang mengintegrasikan SPA React interaktif dengan backend RESTful API Laravel untuk pelacakan stok real-time.
+                </p>
+                <ul class="proj-features">
+                  <li>Komunikasi API stateless dengan sanitasi dan validasi data ketat.</li>
+                  <li>Pencatatan mutasi stok masuk/keluar dan pelaporan analitik.</li>
+                </ul>
+              </div>
+              <div class="proj-bottom-row">
+                <span class="proj-tags">React SPA • Laravel 11 API • MySQL</span>
+                <a href="https://inv.averous.my.id" target="_blank" class="live-link-btn">Buka Live Demo ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Dreamy Island -->
+        <div class="project-card-block">
+          <div class="project-card-grid">
+            <div class="project-img-box">
+              <img src="/mockups/dreamyisland-mockup.jpg" alt="Dreamy Island Resort UI Mockup" />
+            </div>
+            <div class="project-content-box">
+              <div>
+                <div class="proj-title-row">
+                  <span class="proj-name">04. Dreamy Island</span>
+                  <span class="proj-category">React UI & Booking</span>
+                </div>
+                <div class="proj-subtitle">Luxury Resort & Villa Booking Platform</div>
+                <p class="proj-desc">
+                  Antarmuka pemesanan vila mewah modern dengan kalkulator estimasi tarif otomatis, filter kamar interaktif, dan visual estetis.
+                </p>
+                <ul class="proj-features">
+                  <li>Kalkulator pemesanan real-time berdasarkan durasi inap dan tipe kamar.</li>
+                  <li>Navigasi responsif dengan performa rendering tinggi di mobile.</li>
+                </ul>
+              </div>
+              <div class="proj-bottom-row">
+                <span class="proj-tags">React 19 • Tailwind CSS • UI/UX Design</span>
+                <a href="https://dreamy-island.averous.my.id" target="_blank" class="live-link-btn">Buka Live Demo ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <span>Ahmad Afirus — Web Development Portfolio</span>
+        <span>Halaman 04 / 05</span>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         PAGE 5: PROJECTS 5 & 6 + CLOSING
+         ========================================================================== -->
+    <div class="a4-page">
+      <div>
+        <div class="section-header-box">
+          <h2 class="section-main-title">Showcase Proyek (5 & 6) & Kontak</h2>
+          <span class="section-tag">// 04. API APPS & CONTACT</span>
+        </div>
+
+        <!-- Project 5: CineScope & MaMealApp -->
+        <div class="project-card-block" style="margin-bottom: 20px;">
+          <div class="project-card-grid">
+            <div class="project-img-box">
+              <img src="/mockups/cinescope-mockup.jpg" alt="CineScope Movie App Mockup" />
+            </div>
+            <div class="project-content-box">
+              <div>
+                <div class="proj-title-row">
+                  <span class="proj-name">05. CineScope</span>
+                  <span class="proj-category">React 19 API Explorer</span>
+                </div>
+                <div class="proj-subtitle">Aplikasi Penjelajah Film & Serial TV (TMDB API)</div>
+                <p class="proj-desc">
+                  Platform eksplorasi film modern dengan fitur pencarian real-time, trailer video modal, filter multi-genre, dan bookmarking lokal.
+                </p>
+                <ul class="proj-features">
+                  <li>Integrasi REST API TMDB dengan pagination dan infinite loading.</li>
+                  <li>State management reaktif dengan React Hooks modern.</li>
+                </ul>
+              </div>
+              <div class="proj-bottom-row">
+                <span class="proj-tags">React 19 • TMDB API • Axios • Tailwind</span>
+                <a href="https://cinescope.averous.my.id" target="_blank" class="live-link-btn">Buka Live Demo ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: MaMealApp -->
+        <div class="project-card-block" style="margin-bottom: 20px;">
+          <div class="project-card-grid">
+            <div class="project-img-box">
+              <img src="/mockups/mameal-mockup.jpg" alt="MaMealApp Recipe Finder Mockup" />
+            </div>
+            <div class="project-content-box">
+              <div>
+                <div class="proj-title-row">
+                  <span class="proj-name">06. MaMealApp</span>
+                  <span class="proj-category">React 19 Recipe Finder</span>
+                </div>
+                <div class="proj-subtitle">Aplikasi Eksplorasi Resep Kuliner Nusantara & Dunia</div>
+                <p class="proj-desc">
+                  Aplikasi resep kuliner interaktif dengan filter asal negara, panduan langkah memasak terstruktur, dan video tutorial.
+                </p>
+                <ul class="proj-features">
+                  <li>Pencarian instan berbasis bahan makanan dan kategori kuliner.</li>
+                  <li>Desain UI mobile-friendly yang cepat dan intuitif.</li>
+                </ul>
+              </div>
+              <div class="proj-bottom-row">
+                <span class="proj-tags">React 19 • TheMealDB API • Tailwind CSS</span>
+                <a href="https://mameal.averous.my.id" target="_blank" class="live-link-btn">Buka Live Demo ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Closing & Direct Contact Callout Box -->
+        <div class="final-contact-box">
+          <div class="final-contact-text">
+            <h4>Siap Berkontribusi dalam Program Magang / Posisi Junior</h4>
+            <p>Terbuka untuk kesempatan magang (internship) & junior web developer (Remote / Onsite).</p>
+          </div>
+          <a href="mailto:ahmadafirus23@gmail.com" class="final-cta-btn">Hubungi Email ↗</a>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <span>Ahmad Afirus — Web Development Portfolio</span>
+        <span>Halaman 05 / 05</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
