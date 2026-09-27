@@ -35,12 +35,12 @@
 }
 
 /* ==========================================================================
-   Content-Visibility Optimizations (Boosts Performance & TBT dramatically)
+   Section Scroll Offset & Smooth Anchors for Fixed Navbar
    ========================================================================== */
-#skills, #projects, #experience, #contact {
-  content-visibility: auto;
-  contain-intrinsic-size: 800px;
+section[id], #home, #about, #skills, #projects, #experience, #contact {
+  scroll-margin-top: 80px;
 }
+
 
 /* ==========================================================================
    Cyber Grid Background Matrix (Lightweight & GPU Friendly)
