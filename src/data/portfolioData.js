@@ -1,10 +1,3 @@
-import attentioMockup from "../assets/attentio-mockup.jpg";
-import manjaddaMockup from "../assets/manjadda-mockup.jpg";
-import cinescopeMockup from "../assets/cinescope-mockup.jpg";
-import mamealMockup from "../assets/mameal-mockup.jpg";
-import inventioMockup from "../assets/inventio-mockup.jpg";
-import dreamyIslandMockup from "../assets/dreamyisland-mockup.jpg";
-
 export const portfolioData = {
   personal: {
     name: "Averous",
@@ -84,7 +77,7 @@ export const portfolioData = {
       category: "React App",
       tags: ["React 19", "Vite", "Tailwind CSS", "TMDB API", "Axios"],
       featured: true,
-      image: cinescopeMockup,
+      image: "/mockups/cinescope-mockup.webp",
       badge: "Movie Explorer",
       summary: "Aplikasi web penjelajah film & serial TV modern yang dibangun dengan React 19, Vite, dan Tailwind CSS, terintegrasi langsung dengan The Movie Database (TMDB) API.",
       description: "Platform eksplorasi sinematik komprehensif yang memungkinkan pengguna mencari ribuan film dan serial TV populer, melihat rating, sinopsis, video trailer resmi, ulasan, daftar pemeran, serta menyaring film berdasarkan genre dan tingkat popularitas.",
@@ -104,7 +97,7 @@ export const portfolioData = {
       category: "React App",
       tags: ["React 19", "Vite", "Tailwind CSS", "Recipe API", "Local Persistence"],
       featured: true,
-      image: mamealMockup,
+      image: "/mockups/mameal-mockup.webp",
       badge: "Meal & Recipe Planner",
       summary: "Aplikasi web modern dan responsif untuk para pecinta masak rumahan dan individu sibuk. Temukan ribuan resep internasional, atur jadwal makan malam mingguan (7-day dinner schedule), dan buat daftar belanja pintar otomatis tanpa perlu registrasi akun.",
       description: "MaMealApp dirancang untuk menyederhanakan perencanaan makan harian. Pengguna dapat menemukan inspirasi ribuan resep makanan dunia, menjadwalkan menu makan malam mingguan, serta mengkalkulasi bahan masakan secara otomatis menjadi daftar belanjaan pintar yang tersimpan secara lokal di browser.",
@@ -124,7 +117,7 @@ export const portfolioData = {
       category: "Full-Stack Laravel",
       tags: ["Laravel 13", "React.js", "Tailwind CSS", "RESTful API", "MySQL"],
       featured: true,
-      image: inventioMockup,
+      image: "/mockups/inventio-mockup.webp",
       badge: "Full-Stack System",
       summary: "Sistem manajemen inventaris dan aset modern yang memadukan kecepatan frontend React dengan ketangguhan backend Laravel RESTful API dan database MySQL.",
       description: "Platform manajemen stok dan pergudangan lengkap dengan pencatatan barang masuk/keluar, autentikasi aman, manajemen pengguna, pelaporan real-time, dan dashboard analitik interaktif.",
@@ -144,7 +137,7 @@ export const portfolioData = {
       category: "UI & Landing Pages",
       tags: ["React 19", "Vite", "Tailwind CSS", "Lucide Icons", "Responsive UI"],
       featured: true,
-      image: dreamyIslandMockup,
+      image: "/mockups/dreamyisland-mockup.webp",
       badge: "Resort & Booking",
       summary: "Platform web eksklusif untuk eksplorasi dan reservasi vila mewah di Dreamy Island dengan antarmuka elegan, visual tropis yang memukau, modal interaktif, dan navigasi mulus.",
       description: "Dreamy Island dirancang untuk memberikan pengalaman penjelajahan destinasi liburan tropis premium. Dilengkapi katalog vila mewah, filter fasilitas lengkap, galeri visual resolusi tinggi, modal detail kamar interaktif, serta sistem simulasi reservasi yang intuitif dan responsif di semua perangkat.",
@@ -164,7 +157,7 @@ export const portfolioData = {
       category: "Full-Stack Laravel",
       tags: ["Laravel 13", "Blade", "Tailwind CSS", "MySQL", "Chart.js"],
       featured: true,
-      image: attentioMockup,
+      image: "/mockups/attentio-mockup.webp",
       badge: "Full-Stack Laravel",
       summary: "Sistem absensi dan pemantauan aktivitas modern berbasis Laravel 11 dengan pencatatan kehadiran presisi, rekap laporan otomatis, dan dashboard analitik interaktif.",
       description: "Attentio adalah aplikasi web manajemen kehadiran dan aktivitas yang dirancang untuk meningkatkan efisiensi operasional organisasi. Menawarkan fitur pencatatan absensi real-time, pengajuan cuti & izin, visualisasi data kehadiran harian/bulanan, ekspor rekap laporan otomatis, serta sistem otorisasi multi-role yang aman.",
@@ -184,7 +177,7 @@ export const portfolioData = {
       category: "UI & Landing Pages",
       tags: ["Astro.js", "Motion Native", "Tailwind CSS", "TypeScript", "Responsive UI"],
       featured: true,
-      image: manjaddaMockup,
+      image: "/mockups/manjadda-mockup.webp",
       badge: "Pondok Modern Web",
       summary: "ManJadda adalah website Landing Page Pondok Modern yang dirancang untuk memperkenalkan profil lembaga, kurikulum unggulan, fasilitas santri, dan informasi pendaftaran dengan antarmuka elegan, animasi interaktif, serta performa ultra-cepat.",
       description: "ManJadda adalah website Landing Page Pondok Modern yang memadukan nilai-nilai pendidikan Islam kontemporer dengan estetika desain web mutakhir. Dibangun menggunakan arsitektur Astro.js dan Motion Native, platform ini menyajikan profil institusi, program unggulan tahfiz & sains, galeri fasilitas pesantren, alur penerimaan santri baru (PSB), hingga media informasi wali santri secara interaktif, informatif, dan berkecepatan tinggi di semua perangkat.",
