@@ -19,6 +19,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="canonical" href="https://averous.my.id" />
 
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://averous.my.id" />
@@ -37,10 +40,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link 
-      rel="preload" 
+      rel="stylesheet" 
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" 
-      as="style" 
-      onload="this.onload=null;this.rel='stylesheet'"
+      media="print" 
+      onload="this.media='all'"
     />
     <noscript>
       <link 
@@ -53,19 +56,31 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Averous",
-        "url": "https://averous.my.id",
-        "jobTitle": "Fullstack Web Developer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Independent"
-        },
-        "description": "Mahasiswa aktif D4 Rekayasa Perangkat Lunak & Fullstack Developer berfokus pada React, Laravel, Astro.js, dan Tailwind CSS.",
-        "sameAs": [
-          "https://github.com/onlineclass0612-dot",
-          "https://www.instagram.com/@averosse_",
-          "https://www.threads.net/@averosse_"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://averous.my.id/#website",
+            "url": "https://averous.my.id",
+            "name": "Averous Portfolio",
+            "description": "Portofolio resmi Averous — Fullstack Web Developer & Software Engineering Student.",
+            "publisher": {
+              "@id": "https://averous.my.id/#person"
+            }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://averous.my.id/#person",
+            "name": "Averous (Afirus Ahmad)",
+            "url": "https://averous.my.id",
+            "jobTitle": "Fullstack Web Developer",
+            "description": "Mahasiswa aktif D4 Rekayasa Perangkat Lunak & Fullstack Developer berfokus pada React, Laravel, Astro.js, dan Tailwind CSS.",
+            "sameAs": [
+              "https://github.com/onlineclass0612-dot",
+              "https://www.instagram.com/averosse_",
+              "https://www.threads.net/@averosse_"
+            ],
+            "knowsAbout": ["React.js", "Laravel", "Tailwind CSS", "JavaScript", "PHP", "Astro.js", "MySQL", "Linux VPS", "Nginx", "REST API"]
+          }
         ]
       }
     </script>

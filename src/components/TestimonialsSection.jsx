@@ -41,15 +41,19 @@ export const TestimonialsSection = ({ testimonials }) => {
               {/* Top Quote Icon & Stars */}
               <div className="flex items-center justify-between">
                 <Quote className="w-8 h-8 text-cyan-400/40 group-hover:text-cyan-400 transition-colors" />
-                <div className="flex items-center gap-1">
+                <div 
+                  className="flex items-center gap-1"
+                  role="img"
+                  aria-label="Rating 5 dari 5 bintang"
+                >
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" aria-hidden="true" />
                   ))}
                 </div>
               </div>
 
               {/* Testimonial Content */}
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed italic">
+              <p className="text-slate-200 text-sm sm:text-base leading-relaxed italic">
                 "{item.content}"
               </p>
 
@@ -57,14 +61,18 @@ export const TestimonialsSection = ({ testimonials }) => {
               <div className="flex items-center gap-4 pt-4 border-t border-slate-800/80">
                 <img
                   src={item.avatar}
-                  alt={item.name}
+                  alt={`Foto profil ${item.name}`}
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                  decoding="async"
                   className="w-12 h-12 rounded-full object-cover border-2 border-cyan-400/50 shadow-md shadow-cyan-500/20"
                 />
                 <div>
-                  <h4 className="font-heading font-bold text-slate-100 text-sm sm:text-base">
+                  <h3 className="font-heading font-bold text-slate-100 text-sm sm:text-base">
                     {item.name}
-                  </h4>
-                  <p className="text-xs text-slate-400">
+                  </h3>
+                  <p className="text-xs text-slate-300">
                     {item.role}
                   </p>
                 </div>

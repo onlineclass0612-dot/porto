@@ -348,18 +348,22 @@ export const ProjectsSection = ({ projects }) => {
             </motion.button>
 
             {/* Pagination Dots Indicator */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               {filteredProjects.map((_, dotIdx) => (
                 <button
                   key={dotIdx}
                   onClick={() => setCurrentIndex(dotIdx)}
-                  aria-label={`Go to project ${dotIdx + 1}`}
-                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    currentIndex === dotIdx
-                      ? 'w-8 bg-gradient-to-r from-cyan-400 to-purple-500 shadow-md shadow-cyan-500/50'
-                      : 'w-2.5 bg-slate-800 hover:bg-slate-700'
-                  }`}
-                />
+                  aria-label={`Buka slide proyek ke-${dotIdx + 1} dari ${filteredProjects.length}`}
+                  className="p-2.5 flex items-center justify-center cursor-pointer focus:outline-none"
+                >
+                  <span
+                    className={`h-2.5 rounded-full transition-all duration-300 block ${
+                      currentIndex === dotIdx
+                        ? 'w-8 bg-gradient-to-r from-cyan-400 to-purple-500 shadow-md shadow-cyan-500/50'
+                        : 'w-2.5 bg-slate-800 hover:bg-slate-700'
+                    }`}
+                  />
+                </button>
               ))}
             </div>
 
@@ -367,7 +371,7 @@ export const ProjectsSection = ({ projects }) => {
             <motion.button
               onClick={handleNext}
               disabled={isLast}
-              aria-label="Next Project"
+              aria-label="Lihat proyek selanjutnya"
               whileHover={isLast ? {} : { scale: 1.15, x: 3 }}
               whileTap={isLast ? {} : { scale: 0.9 }}
               className={`p-3 rounded-full border transition-all shadow-lg ${

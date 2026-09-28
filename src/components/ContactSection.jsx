@@ -11,7 +11,6 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { GithubIcon, InstagramIcon, ThreadsIcon } from './Icons';
-import confetti from 'canvas-confetti';
 
 export const ContactSection = ({ personal }) => {
   const [formData, setFormData] = useState({
@@ -61,17 +60,16 @@ export const ContactSection = ({ personal }) => {
 
       setIsSubmitted(true);
 
-      // Trigger Celebration Confetti
+      // Trigger Celebration Confetti (Loaded on-demand to maintain 0ms TBT impact)
       try {
+        const confetti = (await import('canvas-confetti')).default;
         confetti({
           particleCount: 80,
           spread: 70,
           origin: { y: 0.6 },
           colors: ['#00F0FF', '#8B5CF6', '#EC4899', '#10B981'],
         });
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (_) {}
 
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
@@ -129,6 +127,7 @@ export const ContactSection = ({ personal }) => {
                 {/* Email Direct */}
                 <motion.a
                   href={`mailto:${personal.email}`}
+                  aria-label={`Kirim email langsung ke ${personal.email}`}
                   whileHover={{ x: 4, scale: 1.02 }}
                   className="flex items-center gap-4 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-900 transition-colors group"
                 >
@@ -136,7 +135,7 @@ export const ContactSection = ({ personal }) => {
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono text-slate-400 uppercase">Email Resmi</div>
+                    <div className="text-[11px] font-mono text-slate-300 uppercase">Email Resmi</div>
                     <div className="text-sm font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors">
                       {personal.email}
                     </div>
@@ -147,7 +146,8 @@ export const ContactSection = ({ personal }) => {
                 <motion.a
                   href={`https://wa.me/${personal.whatsapp.replace(/[^0-9]/g, '')}?text=Halo%20Averous,%20saya%20tertarik%20dengan%20portofolio%20anda`}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
+                  aria-label={`Hubungi via WhatsApp ${personal.whatsapp}`}
                   whileHover={{ x: 4, scale: 1.02 }}
                   className="flex items-center gap-4 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 hover:bg-slate-900 transition-colors group"
                 >
@@ -155,7 +155,7 @@ export const ContactSection = ({ personal }) => {
                     <PhoneCall className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono text-slate-400 uppercase">WhatsApp Chat</div>
+                    <div className="text-[11px] font-mono text-slate-300 uppercase">WhatsApp Chat</div>
                     <div className="text-sm font-semibold text-slate-200 group-hover:text-emerald-300 transition-colors">
                       {personal.whatsapp}
                     </div>
@@ -168,7 +168,7 @@ export const ContactSection = ({ personal }) => {
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono text-slate-400 uppercase">Lokasi / Basis</div>
+                    <div className="text-[11px] font-mono text-slate-300 uppercase">Lokasi / Basis</div>
                     <div className="text-sm font-semibold text-slate-200">
                       {personal.location} (Remote / Onsite)
                     </div>
@@ -186,37 +186,38 @@ export const ContactSection = ({ personal }) => {
 
               {/* Social Channels */}
               <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
-                <span className="font-mono text-xs text-slate-400">Ikuti Profil:</span>
+                <span className="font-mono text-xs text-slate-300">Ikuti Profil:</span>
                 <div className="flex items-center gap-2">
                   <motion.a
                     href={personal.github}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
+                    aria-label="Kunjungi profil GitHub Averous"
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 hover:border-cyan-500/40 transition-colors"
+                    className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-colors cursor-pointer"
                   >
                     <GithubIcon className="w-4 h-4" />
                   </motion.a>
                   <motion.a
                     href={personal.instagram}
                     target="_blank"
-                    rel="noreferrer"
-                    aria-label="Instagram Profile"
+                    rel="noopener noreferrer"
+                    aria-label="Kunjungi profil Instagram Averous"
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 hover:border-cyan-500/40 transition-colors"
+                    className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-colors cursor-pointer"
                   >
                     <InstagramIcon className="w-4 h-4" />
                   </motion.a>
                   <motion.a
                     href={personal.threads}
                     target="_blank"
-                    rel="noreferrer"
-                    aria-label="Threads Profile"
+                    rel="noopener noreferrer"
+                    aria-label="Kunjungi profil Threads Averous"
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 hover:border-cyan-500/40 transition-colors"
+                    className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-colors cursor-pointer"
                   >
                     <ThreadsIcon className="w-4 h-4" />
                   </motion.a>

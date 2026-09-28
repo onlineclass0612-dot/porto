@@ -3,7 +3,7 @@ import { portfolioData } from './data/portfolioData';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 
-// Lazy load offscreen sections for massive mobile performance boost
+// Below-the-fold sections loaded asynchronously to maximize Main Thread availability & slash TBT
 const AboutSection = lazy(() => import('./components/AboutSection').then(m => ({ default: m.AboutSection })));
 const SkillsSection = lazy(() => import('./components/SkillsSection').then(m => ({ default: m.SkillsSection })));
 const ProjectsSection = lazy(() => import('./components/ProjectsSection').then(m => ({ default: m.ProjectsSection })));
@@ -13,8 +13,10 @@ const ContactSection = lazy(() => import('./components/ContactSection').then(m =
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 const CursorGlow = lazy(() => import('./components/CursorGlow').then(m => ({ default: m.CursorGlow })));
 
-// Lightweight non-blocking placeholder
-const SectionFallback = () => <div className="w-full min-h-[300px]" />;
+// ID-preserving skeleton fallback guarantees anchors and document.getElementById never fail
+const SectionFallback = ({ id, minHeight = "min-h-[450px]" }) => (
+  <section id={id} className={`w-full ${minHeight} scroll-mt-24`} />
+);
 
 export function App() {
   useEffect(() => {
@@ -26,7 +28,7 @@ export function App() {
   return (
     <div className="min-h-screen relative selection:bg-cyan-500/30 selection:text-cyan-200 bg-[#06080F] text-slate-100">
       
-      {/* Interactive Cyber Neon Glow Follower (Desktop only via lazy load) */}
+      {/* Interactive Cyber Neon Glow Follower (Desktop only via deferred lazy load) */}
       <Suspense fallback={null}>
         <CursorGlow />
       </Suspense>
@@ -43,34 +45,33 @@ export function App() {
         <Navbar personal={portfolioData.personal} />
 
         <main>
-          {/* Critical Above-the-fold Content (Instant FCP & LCP) */}
+          {/* Above-the-fold Hero rendered immediately for instant FCP & zero TBT */}
           <HeroSection personal={portfolioData.personal} />
 
-          {/* Lazily Loaded Below-the-fold Sections (Zero TBT Penalty) */}
-          <Suspense fallback={<SectionFallback />}>
+          <Suspense fallback={<SectionFallback id="about" minHeight="min-h-[500px]" />}>
             <AboutSection about={portfolioData.about} personal={portfolioData.personal} />
           </Suspense>
 
-          <Suspense fallback={<SectionFallback />}>
+          <Suspense fallback={<SectionFallback id="skills" minHeight="min-h-[450px]" />}>
             <SkillsSection skills={portfolioData.skills} />
           </Suspense>
 
-          <Suspense fallback={<SectionFallback />}>
+          <Suspense fallback={<SectionFallback id="projects" minHeight="min-h-[600px]" />}>
             <ProjectsSection projects={portfolioData.projects} />
           </Suspense>
 
-          <Suspense fallback={<SectionFallback />}>
+          <Suspense fallback={<SectionFallback id="experience" minHeight="min-h-[550px]" />}>
             <ExperienceSection 
               experiences={portfolioData.experiences} 
               education={portfolioData.education} 
             />
           </Suspense>
 
-          <Suspense fallback={<SectionFallback />}>
+          <Suspense fallback={<SectionFallback id="testimonials" minHeight="min-h-[350px]" />}>
             <TestimonialsSection testimonials={portfolioData.testimonials} />
           </Suspense>
 
-          <Suspense fallback={<SectionFallback />}>
+          <Suspense fallback={<SectionFallback id="contact" minHeight="min-h-[600px]" />}>
             <ContactSection personal={portfolioData.personal} />
           </Suspense>
         </main>
@@ -85,3 +86,5 @@ export function App() {
 }
 
 export default App;
+
+

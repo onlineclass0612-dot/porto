@@ -1,0 +1,5 @@
+# Robots.txt for https://averous.my.id
+User-agent: *
+Allow: /
+
+Sitemap: https://averous.my.id/sitemap.xml

@@ -173,13 +173,11 @@ export const SkillsSection = ({ skills }) => {
           className="p-6 rounded-2xl glass-panel border border-cyan-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-cyan-950/20"
         >
           <div className="flex items-center gap-4 text-left">
-            <motion.div 
-              animate={{ rotate: [0, 8, -8, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/40 flex items-center justify-center shrink-0 shadow-lg shadow-cyan-500/10"
+            <div 
+              className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/40 flex items-center justify-center shrink-0 shadow-lg shadow-cyan-500/10 animate-float"
             >
               <Zap className="w-6 h-6 text-cyan-400" />
-            </motion.div>
+            </div>
             <div>
               <h4 className="font-heading font-bold text-lg text-slate-100">
                 Core Stack: React 19 + Tailwind CSS + Laravel 11 + Astro.js

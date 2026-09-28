@@ -126,46 +126,46 @@ export const HeroSection = ({ personal }) => {
             <motion.div variants={itemVariants} className="pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4 w-full">
               {/* Socials */}
               <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-slate-400">Connect:</span>
+                <span className="font-mono text-xs text-slate-300">Connect:</span>
                 <motion.a
                   href={personal.github}
                   target="_blank"
-                  rel="noreferrer"
-                  aria-label="GitHub Profile"
+                  rel="noopener noreferrer"
+                  aria-label="Kunjungi profil GitHub Averous"
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-2 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-cyan-300 hover:border-cyan-500/50 transition-colors shadow-sm"
+                  className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/50 transition-colors shadow-sm cursor-pointer"
                 >
                   <GithubIcon className="w-4 h-4" />
                 </motion.a>
                 <motion.a
                   href={personal.instagram}
                   target="_blank"
-                  rel="noreferrer"
-                  aria-label="Instagram Profile"
+                  rel="noopener noreferrer"
+                  aria-label="Kunjungi profil Instagram Averous"
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-2 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-cyan-300 hover:border-cyan-500/50 transition-colors shadow-sm"
+                  className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/50 transition-colors shadow-sm cursor-pointer"
                 >
                   <InstagramIcon className="w-4 h-4" />
                 </motion.a>
                 <motion.a
                   href={personal.threads}
                   target="_blank"
-                  rel="noreferrer"
-                  aria-label="Threads Profile"
+                  rel="noopener noreferrer"
+                  aria-label="Kunjungi profil Threads Averous"
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-2 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-cyan-300 hover:border-cyan-500/50 transition-colors shadow-sm"
+                  className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/50 transition-colors shadow-sm cursor-pointer"
                 >
                   <ThreadsIcon className="w-4 h-4" />
                 </motion.a>
                 <motion.a
                   href={`mailto:${personal.email}`}
-                  aria-label="Direct Email"
+                  aria-label={`Kirim email ke ${personal.email}`}
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-2 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-purple-300 hover:border-purple-500/50 transition-colors shadow-sm"
+                  className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-purple-300 hover:border-purple-500/50 transition-colors shadow-sm cursor-pointer"
                 >
                   <Mail className="w-4 h-4" />
                 </motion.a>
@@ -188,36 +188,27 @@ export const HeroSection = ({ personal }) => {
             className="lg:col-span-5 relative flex justify-center items-center"
           >
             
-            {/* Floating Tech Chips with Smooth Spring Animations */}
-            <motion.div 
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              whileHover={{ scale: 1.08 }}
-              className="absolute -top-4 -left-4 z-20 px-3.5 py-1.5 rounded-xl bg-[#0F172A]/90 border border-cyan-400/40 backdrop-blur-md shadow-lg shadow-cyan-500/20 flex items-center gap-2 cursor-pointer"
+            {/* Floating Tech Chips with GPU Hardware-Accelerated CSS Animations */}
+            <div 
+              className="absolute -top-4 -left-4 z-20 px-3.5 py-1.5 rounded-xl bg-[#0F172A]/90 border border-cyan-400/40 backdrop-blur-md shadow-lg shadow-cyan-500/20 flex items-center gap-2 cursor-pointer animate-float"
             >
               <Code2 className="w-4 h-4 text-cyan-400" />
               <span className="font-mono text-xs text-cyan-200 font-semibold">React Specialist</span>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              animate={{ y: [0, -9, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              whileHover={{ scale: 1.08 }}
-              className="absolute -bottom-3 -right-3 z-20 px-3.5 py-1.5 rounded-xl bg-[#0F172A]/90 border border-purple-400/40 backdrop-blur-md shadow-lg shadow-purple-500/20 flex items-center gap-2 cursor-pointer"
+            <div 
+              className="absolute -bottom-3 -right-3 z-20 px-3.5 py-1.5 rounded-xl bg-[#0F172A]/90 border border-purple-400/40 backdrop-blur-md shadow-lg shadow-purple-500/20 flex items-center gap-2 cursor-pointer animate-float-delayed"
             >
               <Layers className="w-4 h-4 text-purple-400" />
               <span className="font-mono text-xs text-purple-200 font-semibold">Tailwind & Laravel</span>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              animate={{ y: [0, -7, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-              whileHover={{ scale: 1.08 }}
-              className="absolute top-1/2 -right-6 -translate-y-1/2 hidden sm:flex z-20 px-3 py-1.5 rounded-xl bg-[#0F172A]/90 border border-teal-400/40 backdrop-blur-md shadow-lg shadow-teal-500/20 flex items-center gap-2 cursor-pointer"
+            <div 
+              className="absolute top-1/2 -right-6 -translate-y-1/2 hidden sm:flex z-20 px-3 py-1.5 rounded-xl bg-[#0F172A]/90 border border-teal-400/40 backdrop-blur-md shadow-lg shadow-teal-500/20 items-center gap-2 cursor-pointer animate-float"
             >
               <Zap className="w-3.5 h-3.5 text-teal-300" />
               <span className="font-mono text-xs text-teal-200 font-medium">99+ Lighthouse</span>
-            </motion.div>
+            </div>
 
             {/* Main Cyber Card Window */}
             <motion.div 

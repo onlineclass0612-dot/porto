@@ -22,34 +22,42 @@ export const Navbar = ({ personal }) => {
       e.preventDefault();
     }
     
-    // Close mobile menu immediately
+    // Close mobile menu
     setMobileMenuOpen(false);
 
     const targetId = href.replace('#', '');
-    if (targetId === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setActiveSection('home');
-      try {
-        window.history.pushState(null, '', '#home');
-      } catch (_) {}
-      return;
-    }
 
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      const navbarHeight = 72;
-      const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - navbarHeight;
+    // Small delay ensures any mobile drawer layout change has started and DOM is ready
+    setTimeout(() => {
+      if (targetId === 'home') {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        });
+        setActiveSection('home');
+        try {
+          window.history.pushState(null, '', '#home');
+        } catch (_) {}
+        return;
+      }
 
-      window.scrollTo({
-        top: Math.max(0, offsetPosition),
-        behavior: 'smooth'
-      });
-      setActiveSection(targetId);
-      try {
-        window.history.pushState(null, '', href);
-      } catch (_) {}
-    }
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const navbarHeight = 72;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth'
+        });
+        setActiveSection(targetId);
+        try {
+          window.history.pushState(null, '', href);
+        } catch (_) {}
+      }
+    }, 60);
   }, []);
 
   // Handle active section calculation on scroll
@@ -72,18 +80,6 @@ export const Navbar = ({ personal }) => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [navLinks]);
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [mobileMenuOpen]);
 
   // Close mobile menu on resize to desktop or ESC key
   useEffect(() => {

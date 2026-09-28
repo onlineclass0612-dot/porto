@@ -53,8 +53,8 @@ export const Footer = ({ personal }) => {
                 href={personal.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 transition-colors"
+                aria-label="Kunjungi profil GitHub Averous"
+                className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-300 transition-colors cursor-pointer"
               >
                 <GithubIcon className="w-4 h-4" />
               </a>
@@ -62,8 +62,8 @@ export const Footer = ({ personal }) => {
                 href={personal.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 transition-colors"
+                aria-label="Kunjungi profil Instagram Averous"
+                className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-300 transition-colors cursor-pointer"
               >
                 <InstagramIcon className="w-4 h-4" />
               </a>
@@ -71,15 +71,15 @@ export const Footer = ({ personal }) => {
                 href={personal.threads}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Threads"
-                className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-300 transition-colors"
+                aria-label="Kunjungi profil Threads Averous"
+                className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-300 transition-colors cursor-pointer"
               >
                 <ThreadsIcon className="w-4 h-4" />
               </a>
               <a
                 href={`mailto:${personal.email}`}
-                aria-label="Email"
-                className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-purple-300 transition-colors"
+                aria-label={`Kirim email ke ${personal.email}`}
+                className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-purple-300 transition-colors cursor-pointer"
               >
                 <Mail className="w-4 h-4" />
               </a>
@@ -87,8 +87,8 @@ export const Footer = ({ personal }) => {
               {/* Scroll To Top */}
               <button
                 onClick={scrollToTop}
-                aria-label="Scroll to top"
-                className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-slate-950 transition-all duration-200"
+                aria-label="Kembali ke bagian atas halaman"
+                className="p-2.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-slate-950 transition-all duration-200 cursor-pointer"
                 title="Back to Top"
               >
                 <ArrowUp className="w-4 h-4" />
