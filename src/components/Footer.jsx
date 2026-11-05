@@ -24,9 +24,9 @@ export const Footer = ({ personal }) => {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-400 to-purple-600 p-[1px] flex items-center justify-center overflow-hidden shadow-sm shadow-cyan-500/20">
                 <div className="w-full h-full bg-[#07090E] rounded-[7px] overflow-hidden flex items-center justify-center">
                   <img 
-                    src="/logo.jpg" 
+                    src="/favicon.svg" 
                     alt="Averous Logo" 
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-contain" 
                   />
                 </div>
               </div>

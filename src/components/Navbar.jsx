@@ -125,9 +125,9 @@ export const Navbar = ({ personal }) => {
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-purple-600 p-[1.5px] transition-transform group-hover:scale-105 group-active:scale-95 shadow-md shadow-cyan-500/25 overflow-hidden">
               <div className="w-full h-full bg-[#07090E] rounded-[10px] overflow-hidden flex items-center justify-center">
                 <img 
-                  src="/logo.jpg" 
+                  src="/favicon.svg" 
                   alt="Averous Logo" 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" 
                 />
               </div>
             </div>
