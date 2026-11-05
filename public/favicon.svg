@@ -1,17 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
   <defs>
-    <linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Background Gradient -->
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#0E1628"/>
+      <stop offset="100%" stop-color="#06080F"/>
+    </radialGradient>
+
+    <!-- Synergy Loop Neon Gradient -->
+    <linearGradient id="cyberLoop" x1="15%" y1="90%" x2="85%" y2="10%">
       <stop offset="0%" stop-color="#00F0FF"/>
-      <stop offset="50%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#EC4899"/>
+      <stop offset="48%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
     </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="4" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+
+    <!-- Complementary Inner Loop Gradient -->
+    <linearGradient id="innerLoop" x1="80%" y1="85%" x2="20%" y2="15%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="60%" stop-color="#00F0FF"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+
+    <!-- Neon Glow Filter -->
+    <filter id="neonFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
   </defs>
-  <rect width="100" height="100" rx="24" fill="#090D16"/>
-  <rect x="2" y="2" width="96" height="96" rx="22" stroke="url(#cyberGrad)" stroke-width="2" opacity="0.6"/>
-  <path d="M50 20L78 78H62L50 50L38 78H22L50 20Z" fill="url(#cyberGrad)" filter="url(#glow)"/>
-  <circle cx="50" cy="50" r="4" fill="#00F0FF"/>
+
+  <!-- Container Badge -->
+  <rect width="120" height="120" rx="30" fill="url(#bgGlow)"/>
+  <rect x="2" y="2" width="116" height="116" rx="28" stroke="url(#cyberLoop)" stroke-width="2" stroke-opacity="0.35"/>
+
+  <!-- Synergy Loop Infinity 'A' Geometry (No Text) -->
+  <g filter="url(#neonFilter)">
+    <!-- Main Outer Loop forming 'A' Apex -->
+    <path 
+      d="M60 22 C70 34, 88 64, 94 82 C97 90, 88 98, 78 94 C68 90, 62 76, 60 70 C58 76, 52 90, 42 94 C32 98, 23 90, 26 82 C32 64, 50 34, 60 22 Z" 
+      fill="none" 
+      stroke="url(#cyberLoop)" 
+      stroke-width="11" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+    />
+
+    <!-- Intertwining Synergy Bridge / Mobius Bar (Connecting the loops) -->
+    <path 
+      d="M38 68 C45 64, 75 64, 82 68" 
+      stroke="url(#innerLoop)" 
+      stroke-width="8" 
+      stroke-linecap="round"
+    />
+
+    <!-- Glowing Core Pulse Node at apex -->
+    <circle cx="60" cy="24" r="3.5" fill="#FFFFFF"/>
+    <circle cx="60" cy="24" r="6" fill="#00F0FF" opacity="0.6"/>
+  </g>
 </svg>

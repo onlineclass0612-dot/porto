@@ -122,11 +122,13 @@ export const Navbar = ({ personal }) => {
             onClick={(e) => scrollToSection(e, '#home')}
             className="group flex items-center gap-2.5 focus:outline-none cursor-pointer"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-purple-600 p-[1.5px] transition-transform group-hover:scale-105 group-active:scale-95 shadow-md shadow-cyan-500/20">
-              <div className="w-full h-full bg-[#07090E] rounded-[10px] flex items-center justify-center">
-                <span className="font-mono font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-                  A
-                </span>
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-purple-600 p-[1.5px] transition-transform group-hover:scale-105 group-active:scale-95 shadow-md shadow-cyan-500/25 overflow-hidden">
+              <div className="w-full h-full bg-[#07090E] rounded-[10px] overflow-hidden flex items-center justify-center">
+                <img 
+                  src="/logo.jpg" 
+                  alt="Averous Logo" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
             </div>
             <div className="flex flex-col text-left">

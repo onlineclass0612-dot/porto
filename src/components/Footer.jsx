@@ -21,9 +21,13 @@ export const Footer = ({ personal }) => {
           {/* Brand Info */}
           <div className="md:col-span-6 space-y-3 text-left">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-400 to-purple-600 p-[1px] flex items-center justify-center">
-                <div className="w-full h-full bg-[#07090E] rounded-[7px] flex items-center justify-center font-mono font-bold text-xs text-cyan-400">
-                  A
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-400 to-purple-600 p-[1px] flex items-center justify-center overflow-hidden shadow-sm shadow-cyan-500/20">
+                <div className="w-full h-full bg-[#07090E] rounded-[7px] overflow-hidden flex items-center justify-center">
+                  <img 
+                    src="/logo.jpg" 
+                    alt="Averous Logo" 
+                    className="w-full h-full object-cover" 
+                  />
                 </div>
               </div>
               <span className="font-heading font-bold text-lg text-slate-100">
